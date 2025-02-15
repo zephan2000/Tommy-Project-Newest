@@ -1,11 +1,11 @@
-import { Fan } from "./Fan"; 
-import { Warehouse } from "./Warehouse"; 
+import { Fan } from "./Fan";
+import { Warehouse } from "./Warehouse";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useState, useRef, useEffect } from "react";
 import React from "react";
 import { csvJSON } from "./BuildingTypeData"; // your CSV parsing function
-
+import { DraggableScroll } from "./DraggableScroll"; // your CSV parsing function
 // Custom hook to fetch CSV data and convert it into an array of objects
 export function useCSVData() {
   const [data, setData] = useState(null);
@@ -45,20 +45,26 @@ export function ReturnDataArray() {
     "Targeted_Greenmark_rating",
     "Targeted_Greenmark_rating",
     "Targeted_Greenmark_rating",
-    "Types_of_building"
+    "Types_of_building",
   ];
 
   return (
-    <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+    <table
+      style={{
+        borderCollapse: "collapse",
+        width: "100%",
+        minWidth: "1200px", // Force table to be wider than the container
+      }}
+    >
       <thead>
         <tr>
           {headers.map((header, idx) => (
             <th
               key={idx}
               style={{
-                border: '1px solid #ccc',
-                padding: '8px',
-                backgroundColor: '#f2f2f2'
+                border: "1px solid #ccc",
+                padding: "8px",
+                backgroundColor: "#f2f2f2",
               }}
             >
               {header}
@@ -72,7 +78,7 @@ export function ReturnDataArray() {
             {headers.map((header, colIndex) => (
               <td
                 key={colIndex}
-                style={{ border: '1px solid #ccc', padding: '8px' }}
+                style={{ border: "1px solid #ccc", padding: "8px" }}
               >
                 {item[header]}
               </td>
@@ -87,13 +93,13 @@ export function ReturnDataArray() {
 // Component that spins the Warehouse model
 export function ModelSpin(props) {
   const fanRef = useRef();
-  
+
   useFrame(() => {
     if (fanRef.current) {
       fanRef.current.rotation.y += 0.005;
     }
   });
-  
+
   return <Warehouse ref={fanRef} {...props} />;
 }
 
@@ -106,9 +112,24 @@ export function SceneProps(props) {
         <directionalLight intensity={2} position={[1, 2, 3]} />
         <ModelSpin />
       </Canvas>
+
       {/* HTML Overlay */}
-      <div style={{ position: "absolute", top: 20, left: 20 }}>
-        <ReturnDataArray />
+      <div
+        style={{
+          position: "absolute",
+          top: 20,
+          left: 20,
+          right: 20,
+          bottom: 20,
+          overflow: "auto", // enable scrollbars if content overflows
+          background: "rgba(255,255,255,0.8)", // for contrast
+          zIndex: 9999, // ensure this is on top
+          pointerEvents: "auto",
+        }}
+      >
+        <DraggableScroll>
+          <ReturnDataArray />
+        </DraggableScroll>
       </div>
     </div>
   );
