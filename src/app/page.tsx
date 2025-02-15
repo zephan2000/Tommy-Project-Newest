@@ -15,7 +15,7 @@ export default function Home() {
             Welcome to your mama's womb
             </h1> 
             <p className="text-4xl font-light text-gray-500">
-              Your mum ray
+              Your mum gay
             </p>
         </div>
       
