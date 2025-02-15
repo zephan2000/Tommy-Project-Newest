@@ -1,0 +1,1371 @@
+BUILDINGID,BUILDINGTYPE,PATHWAY,GOLD,PLAT,SLE,FLOORS,ISSOLARPANEL,,,PATHWAY 1,Pathway,Targeted_Greenmark_rating,Targeted_Greenmark_rating,,Targeted_Greenmark_rating,,,,,,,Types_of_building,
+Building_1,Office_Building,"(i) Chilled Water Air Conditioning System
+• Data logging with the capability to trend at 1-minute sampling time interval, recorded to the 3rd decimal digit. 
+
+• Building Management System (BMS), standalone Energy Monitoring System (EMS) or local sequential controller shall have the capability to compute and display key indicators such as water-side, air-side and total system efficiency and calculated heat balance of the chilled water system. 
+
+• Magnetic in-line flow meter, with 1% uncertainty, and capable of electronic in-situ verification to within ±2% of its original factory calibration. If installation of magnetic in-line meters is not possible, ultrasonic flow meters or other flow meters that can meet the indicated performance may be used. 
+
+• Temperature sensors are to be provided for chilled water and condenser water loop and shall have an end-to-end measurement uncertainty not exceeding ±0.05°C over the entire measurement range. Provisions shall be made for test-plugs or additional thermowells to be installed before and after each temperature sensor along the chilled water and condenser water lines for verification of measurement accuracy. All thermo-wells are recommended to be installed in a manner that ensures the sensors can be in direct contact with the fluid flow. There shall be valid justification if direct immersion of the temperature sensor(s) is/are not possible. Such projects will be assessed on a case-by-case basis. 
+
+• Dedicated power meters (of IEC Class 1 or better) and metering current transformers, where applicable, of Class 1 or better, are to be provided for each of the following groups of equipment: chillers, chilled water pumps, condenser water pumps, cooling towers, air distribution system (i.e. AHUs, PAHUs, FCUs).  
+
+• A heat balance substantiating test for the water-cooled chilled-water system is to be computed in accordance with SS 591 for verification of the accuracy of the M&V instrumentation. The heat balance shall be computed over the entire normal operating hours with more than 80% of the computed heat balance within ± 5% over a 1-week period. Heat balance readings should be generated automatically from BMS/BAS. 
+
+
+(ii) VRF system
+• Data logging with the capability to trend at 5-minute sampling time interval, recorded to at least one decimal place. 
+
+• Building management system (BMS), standalone energy monitoring system (EMS) shall have the capability to compute and display the overall system energy efficiency to facilitate data extraction for verification purpose.  
+
+• Dedicated power meters (of IEC Class 1 or better) and metering current transformers (of Class 1 or better) where applicable, are to be provided for all condensing units of the VRF system and air distribution sub-systems (e.g. AHUs, PAHUs, FCUs).  
+
+• VRF Suppliers’ in-house monitoring system is acceptable if it’s capable of monitoring the system efficiency within 10% uncertainty. ",40,38,38,1,0,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+Building_2,Office_Building,Nonsense_2,23,24,25,1,1,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+Building_3,Office_Building,Nonsense_2,24,25,26,2,0,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+Building_4,Office_Building,Nonsense_3,25,26,27,2,1,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_5,Office_Building,Nonsense_3,26,27,28,3,0,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm)",Office Buildings (Small) (GFA < 15$000sqm)
+Building_6,Office_Building,Nonsense_4,27,28,29,3,1,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_7,Office_Building,Nonsense_3,28,29,30,4,0,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+Building_8,Office_Building,Nonsense_4,29,30,31,4,1,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+Building_9,Hotel,Nonsense_1,30,31,32,1,0,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+Building_10,Hotel,Nonsense_2,31,32,33,1,1,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_11,Hotel,Nonsense_2,32,33,34,2,0,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_12,Hotel,Nonsense_3,33,34,35,2,1,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_13,Hotel,Nonsense_3,34,35,36,3,0,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_14,Hotel,Nonsense_4,35,36,37,3,1,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_15,Hotel,Nonsense_3,36,37,38,4,0,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_16,Hotel,Nonsense_4,37,38,39,4,1,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm)",Office Buildings (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm)",Office Buildings (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm)",Office Buildings (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+Building_ID,Types_of_building,Pathway,Targeted_Greenmark_rating,Does_the_design_have_DCS_OR_DDC_OR_CCS,Pathway_ELIGIBILITY,DCS_OR_DDC_OR_CCS_ELIGIBILITY,Energy_Use_Intensity,AIR_SIDE_EFFICIENCY,OCCUPANCY_RATE_FOR_EUI,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,Hot_Water_System_Ratio,Air_Side_energy_recovery_for_healthcare_facilities,Integrated_Energy_Management_And_Control_Systems,Onsite_Renewables__safety_factor,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,"Office Buildings (Small) (GFA < 15,000sqm) ",Office Buildings (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"Office Buildings (Large) (GFA ≥ 15,000sqm) ",Office Buildings (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm)",Hotels (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Small) (GFA < 15,000sqm)",Hotels (Small) (GFA < 15$000sqm)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)",Hotels (Small) (GFA < 15$000sqm)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm)",Hotels (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)",Hotels (Small) (GFA < 15$000sqm)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm)",Hotels (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm)",Hotels (Large) (GFA ≥ 15$000sqm)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,"Hotels (Small) (GFA < 15,000sqm)  ",Hotels (Small) (GFA < 15$000sqm)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,"Hotels (Large) (GFA ≥ 15,000sqm) ",Hotels (Large) (GFA ≥ 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Hotels (Small) (GFA < 15,000sqm) ",Hotels (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Hotels (Small) (GFA < 15,000sqm) ",Hotels (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,"Hotels (Small) (GFA < 15,000sqm) ",Hotels (Small) (GFA < 15$000sqm) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Retail Buildings,Retail Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum EE,Platinum EE,,Platinum EE,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Retail Buildings,Retail Buildings
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum EE,Platinum EE,,Platinum EE,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum EE,Platinum EE,,Platinum EE,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum EE,Platinum EE,,Platinum EE,,,,,,,Retail Buildings ,Retail Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Retail Buildings,Retail Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,"IHL (University, Polytechnics and ITE)  ",IHL (University$ Polytechnics and ITE)  
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Private Schools and Colleges,Private Schools and Colleges
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Private Schools and Colleges ,Private Schools and Colleges 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Junior Colleges (MOE),Junior Colleges (MOE)
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Primary and Secondary Schools (MOE) ,Primary and Secondary Schools (MOE) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Hospitals (Private and General) ,Hospitals (Private and General) 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Community Hospitals ,Community Hospitals 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Polyclinics ,Polyclinics 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Nursing Homes/ Youth Homes ,Nursing Homes/ Youth Homes 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Mixed Developments,Mixed Developments
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Community Centres,Community Centres
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Civic Buildings ,Civic Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Cultural Instituition ,Cultural Instituition 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Sports and Recreation Centres ,Sports and Recreation Centres 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Religious/ Places of Worship ,Religious/ Places of Worship 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Workers' Dormitories ,Workers' Dormitories 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,Other Non-Residential Buildings ,Other Non-Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,High Tech Industrial Buildings,High Tech Industrial Buildings
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE ,,,,,,,Light Industrial Buildings ,Light Industrial Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS ,GoldPLUS ,,GoldPLUS ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE  ,,,,,,,"Warehouses, Workshops/Logistics and other Industrial buildings ",Warehouses$ Workshops/Logistics and other Industrial buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,SLE,SLE,,SLE,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 2,PATHWAY 2,Platinum,Platinum,,Platinum,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,Platinum,Platinum,,Platinum,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,SLE,SLE,,SLE,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,GoldPLUS,GoldPLUS,,GoldPLUS,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 3,PATHWAY 3,Platinum,Platinum,,Platinum,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,PATHWAY 1,SLE,SLE,,SLE,,,,,,,All Residential Buildings ,All Residential Buildings 
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 2,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 1,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
+,,,,,,,,,,PATHWAY 3,,,,,,,,,,,,,
