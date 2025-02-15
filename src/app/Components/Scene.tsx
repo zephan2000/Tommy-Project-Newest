@@ -6,6 +6,7 @@ import {Canvas, ThreeElements, useFrame} from "@react-three/fiber"
 import { TorusGeometry } from "three";
 import { useRef } from "react";
 import React from "react";
+import { SceneProps } from "./Canvas"; 
 
 function TestTorus()
 {
@@ -25,10 +26,7 @@ function TestTorus()
 export function Scene() {
   return (
     <div className="fixed inset-0">
-     <Canvas camera = {{position: [0,0,5], fov:60}} >
-      
-      <TestTorus />
-     </Canvas>
+     <SceneProps />
     </div>
   );
 }
