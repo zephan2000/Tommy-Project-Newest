@@ -207,7 +207,7 @@ export function SceneProps(props) {
           <directionalLight intensity={2} position={[1, 2, 3]} />
 
           {/* 4. Grid helper & stars */}
-          <gridHelper args={[10, 10]} position={[0, -1, 0]} />
+          {/* <gridHelper args={[10, 10]} position={[0, -1, 0]} /> */}
           <Stars count={500} />
 
           {/* 5. The rotating warehouse model */}

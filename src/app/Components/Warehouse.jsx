@@ -21,18 +21,27 @@ export const Warehouse = forwardRef(function Warehouse(props, ref) {
   if (materials["Mat.1"]) {
     materials["Mat.1"].map = textureMat1;
     materials["Mat.1"].needsUpdate = true;
+    materials["Mat.1"].wireframe = true;
+    materials["Mat.1"].color.set("#FFA500"); // Wireframe color
+    
   }
   if (materials["Mat.002"]) {
     materials["Mat.002"].map = textureMat2;
     materials["Mat.002"].needsUpdate = true;
+    materials["Mat.002"].wireframe = true;
+    materials["Mat.002"].color.set("#FFA500"); // Wireframe color
   }
   if (materials["Mat.003"]) {
     materials["Mat.003"].map = textureMat3;
     materials["Mat.003"].needsUpdate = true;
+    materials["Mat.003"].wireframe = true;
+    materials["Mat.003"].color.set("#FFA500"); // Wireframe color
   }
   if (materials["Mat.004"]) {
     materials["Mat.004"].map = textureMat4;
     materials["Mat.004"].needsUpdate = true;
+    materials["Mat.004"].wireframe = true;
+    materials["Mat.004"].color.set("#FFA500"); // Wireframe color
   }
   return (
     <group {...props} dispose={null}>
