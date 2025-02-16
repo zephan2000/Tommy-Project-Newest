@@ -252,7 +252,7 @@ export function ModelSpin(props) {
 
   useFrame(() => {
     if (fanRef.current) {
-      fanRef.current.rotation.y += 0.005;
+      fanRef.current.rotation.z += 0.005;
     }
   });
 

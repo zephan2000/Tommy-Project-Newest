@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 import { useLoader } from "@react-three/fiber"; // <-- Import useLoader from @react-three/fiber
 import { TextureLoader } from "three"
 
-export function Warehouse(props) {
+export const Warehouse = forwardRef(function Warehouse(props, ref) {
   const { nodes, materials } = useGLTF('/assets/Warehouse.glb')
   // Load textures for each material
   const textureMat = useLoader(TextureLoader, "/assets/WarehouseWindowBig.jpg");
@@ -36,7 +36,12 @@ export function Warehouse(props) {
   }
   return (
     <group {...props} dispose={null}>
-      <group position={[0.052, 2.953, 0.02]} rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+       <group
+        ref={ref}
+        position={[0.052, 2.953, 0.02]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={0.01}
+      >
         <mesh
           castShadow
           receiveShadow
@@ -70,6 +75,6 @@ export function Warehouse(props) {
       </group>
     </group>
   )
-}
+})
 
-useGLTF.preload('/Warehouse.glb')
+useGLTF.preload('/assets/Warehouse.glb')
