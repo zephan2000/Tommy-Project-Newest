@@ -2,12 +2,14 @@ import { Fan } from "./Fan";
 import { Warehouse } from "./Warehouse";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { Eye, EyeOff } from "lucide-react"; // Using lucide icons for visibility toggles
 import { useState, useRef, useEffect } from "react";
 import React from "react";
 import { csvJSON } from "./BuildingTypeData"; // your CSV parsing function
 import { DraggableScroll } from "./DraggableScroll";
-import Papa from 'papaparse';
+import Papa from "papaparse";
+import { Stars } from "./Stars";
 
 const CsvDataComponent = () => {
   const [csvData, setCsvData] = useState([]);
@@ -30,23 +32,23 @@ const CsvDataComponent = () => {
   useEffect(() => {
     const handleCSVLoad = async () => {
       try {
-        const response = await fetch('/assets/TommyProjSheet.csv');
+        const response = await fetch("/assets/TommyProjSheet.csv");
         const csvText = await response.text();
-        
+
         Papa.parse(csvText, {
           header: true,
           complete: (results) => {
-            console.log('CSV Data loaded:', results.data);
+            console.log("CSV Data loaded:", results.data);
             setCsvData(results.data);
             setLoading(false);
           },
           error: (error) => {
-            console.error('Error parsing CSV:', error);
+            console.error("Error parsing CSV:", error);
             setLoading(false);
-          }
+          },
         });
       } catch (error) {
-        console.error('Error fetching CSV:', error);
+        console.error("Error fetching CSV:", error);
         setLoading(false);
       }
     };
@@ -58,24 +60,30 @@ const CsvDataComponent = () => {
   useEffect(() => {
     if (csvData.length > 0) {
       // Extract unique values for each field
-      const extractUniqueValues = (field) => 
-        [...new Set(csvData.map(item => item[field]))].filter(Boolean);
+      const extractUniqueValues = (field) =>
+        [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
 
       const newUniqueValues = {
-        Types_of_building: extractUniqueValues('Types_of_building'),
-        Pathway: extractUniqueValues('Pathway'),
-        Targeted_Greenmark_rating: extractUniqueValues('Targeted_Greenmark_rating'),
-        Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues('Does_the_design_have_DCS_OR_DDC_OR_CCS'),
+        Types_of_building: extractUniqueValues("Types_of_building"),
+        Pathway: extractUniqueValues("Pathway"),
+        Targeted_Greenmark_rating: extractUniqueValues(
+          "Targeted_Greenmark_rating"
+        ),
+        Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
+          "Does_the_design_have_DCS_OR_DDC_OR_CCS"
+        ),
       };
 
       setUniqueValues(newUniqueValues);
 
       // Set initial criteria values
       setCriteria({
-        Types_of_building: newUniqueValues.Types_of_building[0] || '',
-        Pathway: newUniqueValues.Pathway[0] || '',
-        Targeted_Greenmark_rating: newUniqueValues.Targeted_Greenmark_rating[0] || '',
-        Does_the_design_have_DCS_OR_DDC_OR_CCS: newUniqueValues.Does_the_design_have_DCS_OR_DDC_OR_CCS[0] || '',
+        Types_of_building: newUniqueValues.Types_of_building[0] || "",
+        Pathway: newUniqueValues.Pathway[0] || "",
+        Targeted_Greenmark_rating:
+          newUniqueValues.Targeted_Greenmark_rating[0] || "",
+        Does_the_design_have_DCS_OR_DDC_OR_CCS:
+          newUniqueValues.Does_the_design_have_DCS_OR_DDC_OR_CCS[0] || "",
       });
     }
   }, [csvData]);
@@ -83,24 +91,26 @@ const CsvDataComponent = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(`Dropdown changed: ${name} = ${value}`);
-    setCriteria(prev => ({
+    setCriteria((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSearch = (e) => {
     e.preventDefault(); // Prevent form submission
-    console.log('Search criteria:', criteria);
-    
-    const found = csvData.find(item =>
-      item.Types_of_building === criteria.Types_of_building &&
-      item.Pathway === criteria.Pathway &&
-      item.Targeted_Greenmark_rating === criteria.Targeted_Greenmark_rating &&
-      item.Does_the_design_have_DCS_OR_DDC_OR_CCS === criteria.Does_the_design_have_DCS_OR_DDC_OR_CCS
+    console.log("Search criteria:", criteria);
+
+    const found = csvData.find(
+      (item) =>
+        item.Types_of_building === criteria.Types_of_building &&
+        item.Pathway === criteria.Pathway &&
+        item.Targeted_Greenmark_rating === criteria.Targeted_Greenmark_rating &&
+        item.Does_the_design_have_DCS_OR_DDC_OR_CCS ===
+          criteria.Does_the_design_have_DCS_OR_DDC_OR_CCS
     );
-    
-    console.log('Search result:', found);
+
+    console.log("Search result:", found);
     setResult(found);
   };
 
@@ -118,9 +128,7 @@ const CsvDataComponent = () => {
         {Object.entries(uniqueValues).map(([field, options]) => (
           <div key={field} className="flex flex-col">
             <label className="flex flex-col space-y-1">
-              <span className="font-medium">
-                {field.replace(/_/g, ' ')}:
-              </span>
+              <span className="font-medium">{field.replace(/_/g, " ")}:</span>
               <select
                 name={field}
                 value={criteria[field]}
@@ -154,7 +162,9 @@ const CsvDataComponent = () => {
               <tbody>
                 {Object.entries(result).map(([key, value]) => (
                   <tr key={key} className="border-b last:border-b-0">
-                    <td className="p-3 font-medium bg-gray-50">{key.replace(/_/g, ' ')}</td>
+                    <td className="p-3 font-medium bg-gray-50">
+                      {key.replace(/_/g, " ")}
+                    </td>
                     <td className="p-3">{value}</td>
                   </tr>
                 ))}
@@ -171,42 +181,63 @@ export default CsvDataComponent;
 
 // Main Scene component
 export function SceneProps(props) {
-    // State for visibility (similar to public bool IsUIVisible { get; set; })
-    const [isUIVisible, setIsUIVisible] = useState(true);
+  // State for visibility (similar to public bool IsUIVisible { get; set; })
+  const [isUIVisible, setIsUIVisible] = useState(true);
 
-    // Toggle method (similar to private void ToggleUIVisibility())
-    const toggleUIVisibility = () => setIsUIVisible(!isUIVisible);
-  
-    return (
-      <div className="relative h-screen w-full">
-        {/* 3D Scene Canvas (Background) */}
-        <div className="absolute inset-0">
-          <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-            <directionalLight intensity={2} position={[1, 2, 3]} />
-            <ModelSpin />
-          </Canvas>
-        </div>
-  
-        {/* Toggle Button (Always visible) */}
-        <button
-          onClick={toggleUIVisibility}
-          className="absolute top-4 right-4 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
-        >
-          {isUIVisible ? <EyeOff className="w-6 h-6" /> : <Eye className="w-6 h-6" />}
-        </button>
-  
-        {/* Overlay Content (Toggleable) */}
-        {isUIVisible && (
-          <div className="absolute inset-4 md:inset-8 lg:inset-12 bg-white/90 rounded-lg shadow-lg overflow-auto">
-            <div className="p-6">
-              <CsvDataComponent />
-            </div>
-          </div>
-        )}
+  // Toggle method (similar to private void ToggleUIVisibility())
+  const toggleUIVisibility = () => setIsUIVisible(!isUIVisible);
+
+  return (
+    <div className="relative h-screen w-full">
+      {/* 3D Scene Canvas (Background) */}
+      <div className="absolute inset-0">
+      <Canvas camera={{ position: [0, 1, 5], fov: 60 }}>
+          {/* 2. Set background to black */}
+          <color attach="background" args={["#000000"]} />
+
+          {/* 3. Add some lights */}
+          <ambientLight intensity={0.3} />
+          <directionalLight intensity={2} position={[1, 2, 3]} />
+
+          {/* 4. Grid helper & stars */}
+          <gridHelper args={[10, 10]} position={[0, -1, 0]} />
+          <Stars count={500} />
+
+          {/* 5. The rotating warehouse model */}
+          <ModelSpin />
+
+          {/* 6. OrbitControls for camera rotation */}
+          <OrbitControls
+            enablePan={false}
+            enableZoom={true}
+            target={[0, 0, 0]}
+          />
+        </Canvas>
       </div>
-    );
-}
 
+      {/* Toggle Button (Always visible) */}
+      <button
+        onClick={toggleUIVisibility}
+        className="absolute top-4 right-4 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100"
+      >
+        {isUIVisible ? (
+          <EyeOff className="w-6 h-6" />
+        ) : (
+          <Eye className="w-6 h-6" />
+        )}
+      </button>
+
+      {/* Overlay Content (Toggleable) */}
+      {isUIVisible && (
+        <div className="absolute inset-4 md:inset-8 lg:inset-12 bg-white/90 rounded-lg shadow-lg overflow-auto">
+          <div className="p-6">
+            <CsvDataComponent />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Component that spins the Warehouse model
 export function ModelSpin(props) {
@@ -221,89 +252,3 @@ export function ModelSpin(props) {
   return <Warehouse ref={fanRef} {...props} />;
 }
 
-
-
-
-// Custom hook to fetch CSV data and convert it into an array of objects
-export function useCSVData() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("/assets/TommyProjSheet.csv")
-      .then((response) => response.text())
-      .then((csvText) => {
-        const jsonData = csvJSON(csvText);
-        setData(jsonData);
-      })
-      .catch((error) => console.error("Error fetching CSV data:", error));
-  }, []);
-
-  return data;
-}
-
-// Component to render CSV data as an HTML table
-export function ReturnDataArray() {
-  const dataArray = useCSVData();
-
-  if (!dataArray) {
-    return <div>Loading CSV data...</div>;
-  }
-
-  const headers = [
-    "BUILDINGID",
-    "BUILDINGTYPE",
-    "PATHWAY",
-    "GOLD",
-    "PLAT",
-    "SLE",
-    "FLOORS",
-    "ISSOLARPANEL",
-    "PATHWAY 1",
-    "Pathway",
-    "Targeted_Greenmark_rating",
-    "Targeted_Greenmark_rating",
-    "Targeted_Greenmark_rating",
-    "Types_of_building",
-  ];
-
-  return (
-    <table
-      style={{
-        borderCollapse: "collapse",
-        width: "100%",
-        minWidth: "1200px", // Force table to be wider than the container
-      }}
-    >
-      <thead>
-        <tr>
-          {headers.map((header, idx) => (
-            <th
-              key={idx}
-              style={{
-                border: "1px solid #ccc",
-                padding: "8px",
-                backgroundColor: "#f2f2f2",
-              }}
-            >
-              {header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {dataArray.map((item, rowIndex) => (
-          <tr key={rowIndex}>
-            {headers.map((header, colIndex) => (
-              <td
-                key={colIndex}
-                style={{ border: "1px solid #ccc", padding: "8px" }}
-              >
-                {item[header]}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
