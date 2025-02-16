@@ -10,6 +10,13 @@ import { csvJSON } from "./BuildingTypeData"; // your CSV parsing function
 import { DraggableScroll } from "./DraggableScroll";
 import Papa from "papaparse";
 import { Stars } from "./Stars";
+import { TextureLoader } from "three";
+
+function StarsBackground() {
+  const starTexture = useLoader(TextureLoader, "/assets/cyberpunkBG.png");
+  // The texture will automatically be set as the background for the scene
+  return <primitive attach="background" object={starTexture} />;
+}
 
 const CsvDataComponent = () => {
   const [csvData, setCsvData] = useState([]);
