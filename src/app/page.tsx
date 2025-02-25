@@ -18,7 +18,7 @@ export default function Home() {
       >
         <div id="text-1" className="text-center mb-64">
           <h1 className="text-8xl font-medium mb-5">
-            Welcome to Tommy's Project
+            Welcome to Tommy&apos;s Project
           </h1>
           <p className="text-4xl font-light text-gray-500">
             Please Gib A
