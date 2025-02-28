@@ -430,21 +430,6 @@ const CsvDataComponent = () => {
                       </div>
                     </div>
                     
-                    <div className="mb-8">
-                      <h4 className="text-xl font-bold mb-4">User's Value</h4>
-                      <div className="relative">
-                        <div className="h-8 w-full flex">
-                          <div className="h-8 flex-1 bg-green-500"></div>
-                          <div className="h-8 flex-1 bg-yellow-500"></div>
-                          <div className="h-8 flex-1 bg-red-500"></div>
-                        </div>
-                        <div className="flex justify-between text-sm mt-1">
-                          <span>115</span>
-                          <span>120</span>
-                          <span>145</span>
-                        </div>
-                      </div>
-                    </div>
                     
                     {/* Solution category bars with toggleable solutions */}
                     <div className="space-y-12">
