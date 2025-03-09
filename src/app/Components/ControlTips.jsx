@@ -14,12 +14,12 @@ export const ControlTips = () => {
     <div className="fixed bottom-4 left-4 z-50">
       {/* Panel container with sliding effect */}
       <div
-        className="relative w-80 bg-gray-200 shadow-lg overflow-hidden transition-transform duration-300"
+        className="relative w-80 rounded-2xl bg-gray-200 shadow-lg overflow-hidden transition-transform duration-300"
         style={{
           height: '150px', // Adjust the panel height as needed
           transform: isOpen 
             ? 'translateX(0)' 
-            : 'translateX(calc(-100% + 1.6rem))' // Only show the toggle button (2.5rem wide)
+            : 'translateX(calc(-100% + 1.4rem))' // Only show the toggle button (2.5rem wide)
         }}
       >
         {/* Panel content */}
@@ -41,7 +41,7 @@ export const ControlTips = () => {
         <button
          className="
          absolute top-0 bottom-0 right-0 
-         w-10 
+         w-9 
          bg-gray-200 
          flex items-center justify-center 
          rounded-tr-lg rounded-br-lg

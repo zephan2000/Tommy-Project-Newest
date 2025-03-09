@@ -543,10 +543,10 @@ const CsvDataComponent = () => {
           {config.unit && ` ${config.unit}`}
         </label>
         <div className="relative">
-          <div className="h-2 w-full flex">
-            <div className="h-2 flex-1 bg-green-500"></div>
-            <div className="h-2 flex-1 bg-yellow-500"></div>
-            <div className="h-2 flex-1 bg-red-500"></div>
+          <div className="h-2.5 w-full flex">
+            <div className="h-2.5 flex-1 rounded-l-2xl bg-green-500"></div>
+            <div className="h-2.5 flex-1 bg-yellow-500"></div>
+            <div className="h-2.5 flex-1 rounded-r-2xl bg-red-500"></div>
           </div>
 
           <div className="relative">
@@ -978,23 +978,6 @@ const CsvDataComponent = () => {
                       </button>
                     </div>
 
-                    {/* EUI bars and solutions - same as original */}
-                    <div className="mb-4">
-                      <h4 className="font-medium mb-2">EUI Values</h4>
-                      <div className="relative">
-                        <div className="h-6 w-full flex">
-                          <div className="h-6 flex-1 bg-green-500"></div>
-                          <div className="h-6 flex-1 bg-yellow-500"></div>
-                          <div className="h-6 flex-1 bg-red-500"></div>
-                        </div>
-                        <div className="flex justify-between text-xs mt-1">
-                          <span>115</span>
-                          <span>120</span>
-                          <span>145</span>
-                        </div>
-                      </div>
-                    </div>
-
                     {/* Solution category bars with toggleable solutions */}
                     <div className="space-y-4">
                       {getSolutionCategories().map((category) => (
@@ -1016,9 +999,9 @@ const CsvDataComponent = () => {
                           {/* Category bar */}
                           <div className="relative mb-2">
                             <div className="h-6 w-full flex">
-                              <div className="h-6 flex-1 bg-green-500"></div>
-                              <div className="h-6 flex-1 bg-yellow-500"></div>
-                              <div className="h-6 flex-1 bg-red-500"></div>
+                            <div className="h-6 flex-1 rounded-l-2xl bg-green-500"></div>
+                          <div className="h-6 flex-1 bg-yellow-500"></div>
+                          <div className="h-6 flex-1 rounded-r-2xl bg-red-500"></div>
                             </div>
                             <div className="flex justify-between text-xs mt-1">
                               <span>115</span>
