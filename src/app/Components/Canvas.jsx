@@ -12,6 +12,7 @@ import Papa from "papaparse";
 import { Stars } from "./Stars";
 import { TextureLoader } from "three";
 import "react-resizable/css/styles.css";
+import { ControlTips } from "./ControlTips";
 
 function StarsBackground() {
   const starTexture = useLoader(TextureLoader, "/assets/cyberpunkBG.png");
@@ -560,7 +561,7 @@ const CsvDataComponent = () => {
                 return (
                   <div
                     key={index}
-                    className="absolute top-0 w-px h-10 bg-black"
+                    className="absolute top-0 w-0.5 h-10 bg-purple-600"
                     style={{ left: `${position}%` }}
                   >
                     <div className="absolute -left-14 top-12 w-28 text-center text-xs">
@@ -582,7 +583,7 @@ const CsvDataComponent = () => {
               style={{
                 // Custom styling for the line selector
                 "--thumb-appearance": "none",
-                "--thumb-width": "2px",
+                "--thumb-width": "4px",
                 "--thumb-height": "16px",
                 "--thumb-color": "black",
               }}
@@ -1125,7 +1126,7 @@ export function SceneProps(props) {
           />
         </Canvas>
       </div>
-
+      <ControlTips/>
       {/* Toggle Button (Always visible) */}
       <button
         onClick={toggleUIVisibility}
@@ -1180,7 +1181,6 @@ export function SmallModel(props) {
 
       {/* 5. The rotating warehouse model */}
       <ModelSpin />
-
       {/* 6. OrbitControls for camera rotation */}
       <OrbitControls enablePan={false} enableZoom={true} target={[0, 0, 0]} />
     </Canvas>
