@@ -13,6 +13,8 @@ import { Stars } from "./Stars";
 import { TextureLoader } from "three";
 import "react-resizable/css/styles.css";
 import { ControlTips } from "./ControlTips";
+// Import the Google Sheets service
+import { fetchSheetData } from './googleSheetService';
 
 function StarsBackground() {
   const starTexture = useLoader(TextureLoader, "/assets/cyberpunkBG.png");
@@ -106,61 +108,55 @@ const CsvDataComponent = () => {
   // State for section height adjustment
   const [detailsSectionHeight, setDetailsSectionHeight] = useState(60); // percentage
 
-  // Load and parse CSV data
-  useEffect(() => {
-    const handleCSVLoad = async () => {
-      try {
-        const response = await fetch("/assets/TommyProjSheet.csv");
-        const csvText = await response.text();
+ // Replace the CSV loading with Google Sheets API call
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      
+      const spreadsheetId = '1ZTdEcpzw6yik9xUFJpNpWhETJwSnjDRk24YcVy4MSOw';
+      const gid = '0'; // Replace with your actual sheet gid
+      const data = await fetchSheetData(spreadsheetId, gid);
+      
+      console.log("Sheet Data loaded:", data);
+      setCsvData(data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error loading sheet data:", error);
+      setLoading(false);
+    }
+  };
 
-        Papa.parse(csvText, {
-          header: true,
-          complete: (results) => {
-            console.log("CSV Data loaded:", results.data);
-            setCsvData(results.data);
-            setLoading(false);
-          },
-          error: (error) => {
-            console.error("Error parsing CSV:", error);
-            setLoading(false);
-          },
-        });
-      } catch (error) {
-        console.error("Error fetching CSV:", error);
-        setLoading(false);
-      }
+  fetchData();
+}, []);
+
+// Process unique values when data loads
+useEffect(() => {
+  if (csvData.length > 0) {
+    // Extract unique values for each field
+    const extractUniqueValues = (field) =>
+      [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
+
+    const newUniqueValues = {
+      Types_of_building: extractUniqueValues("Types_of_building"),
+      Pathway: extractUniqueValues("Pathway"),
+      Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
+        "Does_the_design_have_DCS_OR_DDC_OR_CCS"
+      ),
     };
 
-    handleCSVLoad();
-  }, []);
+    setUniqueValues(newUniqueValues);
 
-  // Process unique values when data loads
-  useEffect(() => {
-    if (csvData.length > 0) {
-      // Extract unique values for each field
-      const extractUniqueValues = (field) =>
-        [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
-
-      const newUniqueValues = {
-        Types_of_building: extractUniqueValues("Types_of_building"),
-        Pathway: extractUniqueValues("Pathway"),
-        Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
-          "Does_the_design_have_DCS_OR_DDC_OR_CCS"
-        ),
-      };
-
-      setUniqueValues(newUniqueValues);
-
-      // Set initial criteria values
-      setCriteria((prev) => ({
-        ...prev,
-        Types_of_building: newUniqueValues.Types_of_building[0] || "",
-        Pathway: newUniqueValues.Pathway[0] || "",
-        Does_the_design_have_DCS_OR_DDC_OR_CCS:
-          newUniqueValues.Does_the_design_have_DCS_OR_DDC_OR_CCS[0] || "",
-      }));
-    }
-  }, [csvData]);
+    // Set initial criteria values
+    setCriteria((prev) => ({
+      ...prev,
+      Types_of_building: newUniqueValues.Types_of_building[0] || "",
+      Pathway: newUniqueValues.Pathway[0] || "",
+      Does_the_design_have_DCS_OR_DDC_OR_CCS:
+        newUniqueValues.Does_the_design_have_DCS_OR_DDC_OR_CCS[0] || "",
+    }));
+  }
+}, [csvData]);
 
   // Update criteriaRef when criteria changes
   useEffect(() => {
@@ -531,7 +527,7 @@ const CsvDataComponent = () => {
       !config.isSimpleNumeric &&
       searchResults &&
       searchResults.length > 0 &&
-      searchResults.every((building) => building[config.field] === "NA");
+      searchResults.every((building) => building[config.field] === "Not Eligible" || building[config.field] === "NA" );
     console.log("checking render slider", allNotEligible, searchResults);
 
     if (allNotEligible) {
