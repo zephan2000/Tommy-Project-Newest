@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa';
 
 export const ControlTips = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="fixed bottom-4 left-4 z-50">
@@ -41,7 +41,7 @@ export const ControlTips = () => {
         <button
          className="
          absolute top-0 bottom-0 right-0 
-         w-9 
+         w-9
          bg-gray-200 
          flex items-center justify-center 
          rounded-tr-lg rounded-br-lg

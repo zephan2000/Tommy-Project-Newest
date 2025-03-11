@@ -157,10 +157,10 @@ const CsvDataComponent = () => {
     }
   }, [csvData]);
 
-    // Update criteriaRef when criteria changes
-    useEffect(() => {
-      criteriaRef.current = criteria;
-    }, [criteria]);
+  // Update criteriaRef when criteria changes
+  useEffect(() => {
+    criteriaRef.current = criteria;
+  }, [criteria]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -220,7 +220,7 @@ const CsvDataComponent = () => {
       };
 
       const newRanges = {};
-      
+
       // Calculate ranges for all metrics
       Object.keys(metricConfig).forEach((metricType) => {
         const values = searchResults.map((building) =>
@@ -229,7 +229,6 @@ const CsvDataComponent = () => {
         newRanges[metricType] = calculateRange(values);
         console.log("this is values ", values, metricType);
       });
-      
 
       setSliderRanges(newRanges);
     }
@@ -280,14 +279,13 @@ const CsvDataComponent = () => {
     const config = metricConfig[metricType];
     const value = building[config.field];
 
-    if (!value || value === "NA" ||value === "Not Eligible") return "Not";
+    if (!value || value === "NA" || value === "Not Eligible") return "Not";
     //console.log("parsing metric value", value);
     // Handle simple numeric values (like EUI)
     if (config.isSimpleNumeric) {
-      return parseFloat(value) || null ;
+      return parseFloat(value) || null;
     }
-    if (metricType == "ASE")
-    {
+    if (metricType == "ASE") {
       console.log("ASE value", value);
     }
     // Handle conditional formats with @ separator
@@ -346,7 +344,7 @@ const CsvDataComponent = () => {
     const value = building[config.field];
 
     if (!value || value === "Not Eligible") return "Not Eligible";
-    
+
     // Handle conditional formats with @ separator
     if (value.includes("@")) {
       const parts = value.split("@");
@@ -502,10 +500,12 @@ const CsvDataComponent = () => {
 
   // Function to get the position of a vertical line marker relative to the slider
   const getMarkerPosition = (value, min, max) => {
+    console.log("this is current value", value)
     if (!value || value === null) return -1;
     const percentage = ((value - min) / (max - min)) * 100;
     return Math.max(0, Math.min(100, percentage));
   };
+
 
   // Function to render a slider with vertical markers
   const renderSlider = (metricType) => {
@@ -515,9 +515,7 @@ const CsvDataComponent = () => {
       !config.isSimpleNumeric &&
       searchResults &&
       searchResults.length > 0 &&
-      searchResults.every(
-        (building) => building[config.field] === "NA"
-      );
+      searchResults.every((building) => building[config.field] === "NA");
     console.log("checking render slider", allNotEligible, searchResults);
 
     if (allNotEligible) {
@@ -532,9 +530,78 @@ const CsvDataComponent = () => {
         </div>
       );
     }
+     // Component to be called during iteration
+  const processBarSegment = (building, index, searchResults) => {
+    const value = parseMetricValue(building, metricType);
+    const position = getMarkerPosition(value, min, max);
+
+    // We're not correctly setting the widths because we're just storing
+    // the absolute positions, not calculating the relative widths
+    return position;
+  };
 
     const currentValue = criteria[`current${metricType}`];
-    const { min, max } = sliderRanges[metricType];
+    // Adjust the min and max values as per requirements
+    // Adjust the min and max values as per requirements
+    let min = 0; // Min will always be 0
+
+    // Sort the buildings by metric value to ensure consistent color bands
+    const sortedBuildings = searchResults
+      ? [...searchResults].sort(
+          (a, b) =>
+            parseMetricValue(a, metricType) - parseMetricValue(b, metricType)
+        )
+      : [];
+
+    // Get the highest value (index 2 or last value if fewer)
+    let highestValue = 0;
+    if (sortedBuildings.length > 0) {
+      const index = Math.min(2, sortedBuildings.length - 1);
+      highestValue = parseMetricValue(sortedBuildings[index], metricType);
+    }
+
+    // Set max to 10% above the highest value
+    const max = highestValue * 1.1;
+
+    // Calculate positions for the color bands
+    let greenPosition = 0;
+    let yellowPosition = 0;
+    let redPosition = 0;
+    let bluePosition = 100; // Default to full width
+
+    if (sortedBuildings.length > 0) {
+      if (sortedBuildings.length > 0) {
+        greenPosition = getMarkerPosition(
+          parseMetricValue(sortedBuildings[0], metricType),
+          min,
+          max
+        );
+      }
+
+      if (sortedBuildings.length > 1) {
+        yellowPosition = getMarkerPosition(
+          parseMetricValue(sortedBuildings[1], metricType),
+          min,
+          max
+        );
+      }
+
+      if (sortedBuildings.length > 2) {
+        redPosition = getMarkerPosition(
+          parseMetricValue(sortedBuildings[2], metricType),
+          min,
+          max
+        );
+      }
+
+      // Blue ends at 100%
+    }
+
+    // Calculate actual widths
+    const greenWidth = greenPosition;
+    const yellowWidth = yellowPosition - greenPosition;
+    const redWidth = redPosition - yellowPosition;
+    const blueWidth = 100 - redPosition;
 
     return (
       <div className="mt-6">
@@ -543,21 +610,24 @@ const CsvDataComponent = () => {
           {config.unit && ` ${config.unit}`}
         </label>
         <div className="relative">
-          <div className="h-2.5 w-full flex">
-            <div className="h-2.5 flex-1 rounded-l-2xl bg-green-500"></div>
-            <div className="h-2.5 flex-1 bg-yellow-500"></div>
-            <div className="h-2.5 flex-1 rounded-r-2xl bg-red-500"></div>
-          </div>
-
-          <div className="relative">
+           {/* Min and max values display */}
+           <div className="flex justify-between text-xs mt-1 px-1 pb-2">
+              <span>
+                Min: {min}
+                {config.unit && ` ${config.unit}`}
+              </span>
+              <span>
+                Max: {max.toFixed(3)}
+                {config.unit && ` ${config.unit}`}
+              </span>
+            </div>
+          <div className="relative" style={{ height: "2.5rem", width: "100%" }}>
             {/* Vertical line markers for building values */}
             {searchResults &&
               searchResults.map((building, index) => {
-                const value = parseMetricValue(building, metricType);
-                const position = getMarkerPosition(value, min, max);
-
+                const position = processBarSegment(building, index);
+                console.log("checking marker position" + building + index);
                 if (position < 0) return null;
-
                 return (
                   <div
                     key={index}
@@ -570,6 +640,36 @@ const CsvDataComponent = () => {
                   </div>
                 );
               })}
+
+            {/* Colored bar segments */}
+            <div
+              className="absolute top-0 h-2.5 rounded-l-2xl bg-green-500"
+              style={{ width: `${greenWidth}%`, transition: "width 0.3s ease" }}
+            />
+            <div
+              className="absolute top-0 h-2.5 bg-yellow-500"
+              style={{
+                left: `${greenWidth}%`,
+                width: `${yellowWidth}%`,
+                transition: "left 0.3s ease, width 0.3s ease",
+              }}
+            />
+            <div
+              className="absolute top-0 h-2.5 bg-red-500"
+              style={{
+                left: `${greenWidth + yellowWidth}%`,
+                width: `${redWidth}%`,
+                transition: "left 0.3s ease, width 0.3s ease",
+              }}
+            />
+            <div
+              className="absolute top-0 h-2.5 rounded-r-2xl bg-blue-500"
+              style={{
+                left: `${greenWidth + yellowWidth + redWidth}%`,
+                width: `${blueWidth}%`,
+                transition: "left 0.3s ease, width 0.3s ease",
+              }}
+            />
 
             {/* Range input with custom line selector */}
             <input
@@ -588,7 +688,7 @@ const CsvDataComponent = () => {
                 "--thumb-color": "black",
               }}
             />
-
+              
             {/* Current value display */}
             <div
               className="absolute w-px h-8 bg-blue-700 pointer-events-none"
@@ -603,17 +703,7 @@ const CsvDataComponent = () => {
               </div>
             </div>
 
-            {/* Min and max values display */}
-            <div className="flex justify-between text-xs mt-4 px-1">
-              <span>
-                Min: {min}
-                {config.unit && ` ${config.unit}`}
-              </span>
-              <span>
-                Max: {max}
-                {config.unit && ` ${config.unit}`}
-              </span>
-            </div>
+           
           </div>
         </div>
       </div>
@@ -999,9 +1089,9 @@ const CsvDataComponent = () => {
                           {/* Category bar */}
                           <div className="relative mb-2">
                             <div className="h-6 w-full flex">
-                            <div className="h-6 flex-1 rounded-l-2xl bg-green-500"></div>
-                          <div className="h-6 flex-1 bg-yellow-500"></div>
-                          <div className="h-6 flex-1 rounded-r-2xl bg-red-500"></div>
+                              <div className="h-6 flex-1 rounded-l-2xl bg-green-500"></div>
+                              <div className="h-6 flex-1 bg-yellow-500"></div>
+                              <div className="h-6 flex-1 rounded-r-2xl bg-red-500"></div>
                             </div>
                             <div className="flex justify-between text-xs mt-1">
                               <span>115</span>
@@ -1109,7 +1199,7 @@ export function SceneProps(props) {
           />
         </Canvas>
       </div>
-      <ControlTips/>
+      <ControlTips />
       {/* Toggle Button (Always visible) */}
       <button
         onClick={toggleUIVisibility}
