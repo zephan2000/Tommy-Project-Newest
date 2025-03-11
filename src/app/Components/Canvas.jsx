@@ -21,6 +21,8 @@ function StarsBackground() {
 }
 
 const CsvDataComponent = () => {
+  // Use useState for tooltip visibility
+  const [activeTooltip, setActiveTooltip] = useState(null);
   const [csvData, setCsvData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [uniqueValues, setUniqueValues] = useState({
@@ -44,6 +46,9 @@ const CsvDataComponent = () => {
   });
   // Use a ref to keep track of current criteria for effect dependencies
   const criteriaRef = useRef(criteria);
+
+  // Add this at the component level
+  const initialValueSetRef = useRef({});
   // Initial slider ranges
   const [sliderRanges, setSliderRanges] = useState({
     EUI: { min: 1, max: 999 },
@@ -498,14 +503,25 @@ const CsvDataComponent = () => {
     }));
   };
 
-  // Function to get the position of a vertical line marker relative to the slider
+  // Updated function to enforce number conversion and add debugging
   const getMarkerPosition = (value, min, max) => {
-    console.log("this is current value", value)
-    if (!value || value === null) return -1;
-    const percentage = ((value - min) / (max - min)) * 100;
+    // Convert values to numbers to ensure consistent math
+    const numValue = parseFloat(value);
+    const numMin = parseFloat(min);
+    const numMax = parseFloat(max);
+
+    console.log("Marker calculation:", {
+      value: numValue,
+      min: numMin,
+      max: numMax,
+      percentage: ((numValue - numMin) / (numMax - numMin)) * 100,
+    });
+
+    if (isNaN(numValue) || numValue === null) return -1;
+
+    const percentage = ((numValue - numMin) / (numMax - numMin)) * 100;
     return Math.max(0, Math.min(100, percentage));
   };
-
 
   // Function to render a slider with vertical markers
   const renderSlider = (metricType) => {
@@ -530,17 +546,17 @@ const CsvDataComponent = () => {
         </div>
       );
     }
-     // Component to be called during iteration
-  const processBarSegment = (building, index, searchResults) => {
-    const value = parseMetricValue(building, metricType);
-    const position = getMarkerPosition(value, min, max);
+    // Component to be called during iteration
+    const processBarSegment = (building, index, searchResults) => {
+      const value = parseMetricValue(building, metricType);
+      const position = getMarkerPosition(value, min, max);
 
-    // We're not correctly setting the widths because we're just storing
-    // the absolute positions, not calculating the relative widths
-    return position;
-  };
+      // We're not correctly setting the widths because we're just storing
+      // the absolute positions, not calculating the relative widths
+      return position;
+    };
 
-    const currentValue = criteria[`current${metricType}`];
+    let currentValue = criteria[`current${metricType}`];
     // Adjust the min and max values as per requirements
     // Adjust the min and max values as per requirements
     let min = 0; // Min will always be 0
@@ -603,6 +619,43 @@ const CsvDataComponent = () => {
     const redWidth = redPosition - yellowPosition;
     const blueWidth = 100 - redPosition;
 
+    // Get tooltip labels based on metricType
+    const getTooltipLabels = () => {
+      switch (metricType) {
+        case "EUI":
+          return {
+            green: "GoldPlus",
+            yellow: "Platinum",
+            red: "SLE",
+            blue: "Above SLE",
+          };
+        case "WPR":
+          return {
+            green: "Excellent",
+            yellow: "Good",
+            red: "Average",
+            blue: "Below Average",
+          };
+        // Add more cases for other metricTypes
+        default:
+          return {
+            green: "Best",
+            yellow: "Better",
+            red: "Good",
+            blue: "Standard",
+          };
+      }
+    };
+
+    const tooltipLabels = getTooltipLabels();
+    const checkCurrentValue = (value) => {
+      return value == null || isNaN(value) ? max / 2 : value;
+    };
+    // Then in your render function, ensure consistently formatted values
+    const sliderCurrentValue = checkCurrentValue(parseFloat(currentValue));
+
+    
+
     return (
       <div className="mt-6">
         <label className="font-medium block mb-4">
@@ -610,17 +663,17 @@ const CsvDataComponent = () => {
           {config.unit && ` ${config.unit}`}
         </label>
         <div className="relative">
-           {/* Min and max values display */}
-           <div className="flex justify-between text-xs mt-1 px-1 pb-2">
-              <span>
-                Min: {min}
-                {config.unit && ` ${config.unit}`}
-              </span>
-              <span>
-                Max: {max.toFixed(3)}
-                {config.unit && ` ${config.unit}`}
-              </span>
-            </div>
+          {/* Min and max values display */}
+          <div className="flex justify-between text-xs mt-1 px-1 pb-2">
+            <span>
+              Min: {min}
+              {config.unit && ` ${config.unit}`}
+            </span>
+            <span>
+              Max: {max.toFixed(3)}
+              {config.unit && ` ${config.unit}`}
+            </span>
+          </div>
           <div className="relative" style={{ height: "2.5rem", width: "100%" }}>
             {/* Vertical line markers for building values */}
             {searchResults &&
@@ -641,35 +694,70 @@ const CsvDataComponent = () => {
                 );
               })}
 
-            {/* Colored bar segments */}
+            {/* Colored bar segments with tooltips */}
             <div
-              className="absolute top-0 h-2.5 rounded-l-2xl bg-green-500"
+              className="absolute top-0 h-2.5 rounded-l-2xl bg-green-500 hover:brightness-90 cursor-pointer transition-all"
               style={{ width: `${greenWidth}%`, transition: "width 0.3s ease" }}
-            />
+              onMouseEnter={() => setActiveTooltip("green")}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
+              {activeTooltip === "green" && (
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
+                  {tooltipLabels.green}
+                </div>
+              )}
+            </div>
+
             <div
-              className="absolute top-0 h-2.5 bg-yellow-500"
+              className="absolute top-0 h-2.5 bg-yellow-500 hover:brightness-90 cursor-pointer transition-all"
               style={{
                 left: `${greenWidth}%`,
                 width: `${yellowWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
               }}
-            />
+              onMouseEnter={() => setActiveTooltip("yellow")}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
+              {activeTooltip === "yellow" && (
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
+                  {tooltipLabels.yellow}
+                </div>
+              )}
+            </div>
+
             <div
-              className="absolute top-0 h-2.5 bg-red-500"
+              className="absolute top-0 h-2.5 bg-red-500 hover:brightness-90 cursor-pointer transition-all"
               style={{
                 left: `${greenWidth + yellowWidth}%`,
                 width: `${redWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
               }}
-            />
+              onMouseEnter={() => setActiveTooltip("red")}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
+              {activeTooltip === "red" && (
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
+                  {tooltipLabels.red}
+                </div>
+              )}
+            </div>
+
             <div
-              className="absolute top-0 h-2.5 rounded-r-2xl bg-blue-500"
+              className="absolute top-0 h-2.5 rounded-r-2xl bg-blue-500 hover:brightness-90 cursor-pointer transition-all"
               style={{
                 left: `${greenWidth + yellowWidth + redWidth}%`,
                 width: `${blueWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
               }}
-            />
+              onMouseEnter={() => setActiveTooltip("blue")}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
+              {activeTooltip === "blue" && (
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
+                  {tooltipLabels.blue}
+                </div>
+              )}
+            </div>
 
             {/* Range input with custom line selector */}
             <input
@@ -677,7 +765,7 @@ const CsvDataComponent = () => {
               min={min}
               max={max}
               step="1"
-              value={currentValue}
+              value={sliderCurrentValue}
               onChange={(e) => handleSliderChange(e, metricType)}
               className="w-full h-2 mt-1 appearance-none bg-transparent cursor-pointer relative"
               style={{
@@ -688,22 +776,21 @@ const CsvDataComponent = () => {
                 "--thumb-color": "black",
               }}
             />
-              
+
             {/* Current value display */}
             <div
               className="absolute w-px h-8 bg-blue-700 pointer-events-none"
               style={{
-                left: `${getMarkerPosition(currentValue, min, max)}%`,
+                left: `${getMarkerPosition(sliderCurrentValue, min, max)}%`,
                 top: "-3px",
               }}
             >
-              <div className="absolute -left-10 -top-6 w-20 text-center bg-blue-100 text-blue-700 rounded px-2 text-xs font-bold">
-                {currentValue}
+              <div className="absolute -left-10 -top-6 w-20 text-center bg-blue-100 text-blue-700 rounded px-2 text-xs font-bold"
+              >
+                {checkCurrentValue(currentValue)}
                 {config.unit && ` ${config.unit}`}
               </div>
             </div>
-
-           
           </div>
         </div>
       </div>
@@ -736,7 +823,7 @@ const CsvDataComponent = () => {
             </div>
 
             {/* Pathway */}
-            {/* <div className="flex flex-col">
+            <div className="flex flex-col">
               <label className="font-medium mb-2">Pathway:</label>
               <select
                 name="Pathway"
@@ -750,7 +837,7 @@ const CsvDataComponent = () => {
                   </option>
                 ))}
               </select>
-            </div> */}
+            </div>
 
             {/* DCS/DDC/CCS */}
             <div className="flex flex-col">
