@@ -34,20 +34,28 @@ const DropTarget = ({ children, onDrop }) => {
   );
 };
 
- // Helper function to extract the correct display value
- const getDisplayValue = (key, value, activeTab, criteria) => {
+// Helper function to extract the correct display value
+const getDisplayValue = (key, value, activeTab, criteria) => {
+    // Handle null or undefined values
+    if (value === null || value === undefined) {
+      return "";
+    }
+  
+    // Convert value to string to ensure we can work with it
+    let stringValue = String(value);
+  
     // For building details keys
     const buildingDetailKeys = [
       "AIR_SIDE_EFFICIENCY",
       "OCCUPANCY_RATE_FOR_EUI",
       "ACMV_TSE__OR__No_of_ticks",
     ];
-
+  
     if (buildingDetailKeys.includes(key)) {
       // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
-      console.log(`Processing key: ${key} with value: ${value}`);
+      console.log(`Processing key: ${key} with value: ${stringValue}`);
       // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
-      const parts = value.split("@");
+      const parts = stringValue.split("@");
       console.log("Split parts:", parts);
       for (let part of parts) {
         part = part.trim();
@@ -57,30 +65,51 @@ const DropTarget = ({ children, onDrop }) => {
           console.log("Found match for parts:", part, parts);
           if (underscoreIndex !== -1) {
             const result = part.substring(underscoreIndex + 1).trim();
-            return result; // This should exit the entire function with the result
+            return formatNewLines(result); // Apply new line formatting to the result
           }
         }
       }
     }
-
+  
     // For the ETTV_OR_RETV key
     if (key === "ETTV_OR_RETV") {
       // Example value: "NRBE01-1_≤ 40W/m² @NRB01-1_≤ 45W/m²"
-      const parts = value.split("@");
+      const parts = stringValue.split("@");
       for (let part of parts) {
         part = part.trim();
         // Check if the part starts with the criteria.ETTV_Criteria (e.g., "NRBE01-1" or "NRB01-1")
         if (part.startsWith(criteria.ETTV_Criteria)) {
           const underscoreIndex = part.indexOf("_");
           if (underscoreIndex !== -1) {
-            return part.substring(underscoreIndex + 1).trim();
+            const result = part.substring(underscoreIndex + 1).trim();
+            return formatNewLines(result); // Apply new line formatting to the result
           }
         }
       }
     }
-
-    // Return original value if no conditions match
-    return value;
+  
+    // Apply new line formatting to the original value if no conditions match
+    return formatNewLines(stringValue);
+  };
+  
+  // Helper function to convert \n to React line breaks
+  const formatNewLines = (text) => {
+    if (!text) return text;
+    
+    // Split by \n and join with React line breaks
+    const parts = text.split("\\n");
+    
+    if (parts.length === 1) {
+      return text; // No \n found, return the original text
+    }
+    
+    // Return array of text parts with <br /> elements between them
+    return parts.map((part, index) => (
+      <React.Fragment key={index}>
+        {part}
+        {index < parts.length - 1 && <br />}
+      </React.Fragment>
+    ));
   };
 
 
@@ -280,6 +309,12 @@ const EnhancedBuildingDetailsFullscreen = ({
                     const newFields = [...orderedFields];
                     const [movedField] = newFields.splice(dragIndex, 1);
                     newFields.splice(hoverIndex, 0, movedField);
+                    
+                    // Adjust the order property to maintain consistent ordering
+                    newFields.forEach((field, index) => {
+                      field.order = index;
+                    });
+                  
                     setOrderedFields(newFields);
                   }}
                   isSelected={selectedFields.some(
@@ -372,7 +407,10 @@ const DraggableField = ({
   onDragStart,
   onDragEnd,
 }) => {
-  const ref = useRef(null);
+    const ref = useRef(null);
+    const dragRef = useRef(null);
+    const dropRef = useRef(null);
+    const panelDragRef = useRef(null);
 
   // Drag functionality for dragging to the right panel
   const [{ isDraggingToPanel }, dragToPanel] = useDrag({
@@ -413,73 +451,79 @@ const DraggableField = ({
     },
   });
 
-  // Drop functionality with smooth animation
-  const [, drop] = useDrop({
-    accept: ItemTypes.FIELD,
-    hover(item, monitor) {
-      if (!ref.current) {
-        return;
-      }
+ const [, drop] = useDrop({
+  accept: ItemTypes.FIELD,
+  hover(item, monitor) {
+    if (!ref.current) {
+      return;
+    }
 
-      const dragIndex = item.index;
-      const hoverIndex = index;
+    const dragIndex = item.index;
+    const hoverIndex = index;
 
-      // Don't replace items with themselves
-      if (dragIndex === hoverIndex) {
-        return;
-      }
+    // Don't replace items with themselves
+    if (dragIndex === hoverIndex) {
+      return;
+    }
 
-      // Determine rectangle on screen
-      const hoverBoundingRect = ref.current.getBoundingClientRect();
+    // Determine rectangle on screen
+    const hoverBoundingRect = ref.current.getBoundingClientRect();
 
-      // Get vertical and horizontal middle
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const hoverMiddleX =
-        (hoverBoundingRect.right - hoverBoundingRect.left) / 2;
+    // Determine mouse position
+    const clientOffset = monitor.getClientOffset();
 
-      // Determine mouse position
-      const clientOffset = monitor.getClientOffset();
+    // Get pixels to the top
+    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
 
-      // Get pixels to the top and left
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-      const hoverClientX = clientOffset.x - hoverBoundingRect.left;
+    // Get vertical middle
+    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
-      // Only perform the move when the mouse has crossed half of the items height/width
-      // In a grid layout, we need to consider both horizontal and vertical movement
-      const isAboveMiddleY = hoverClientY < hoverMiddleY;
-      const isBelowMiddleY = hoverClientY > hoverMiddleY;
-      const isLeftOfMiddleX = hoverClientX < hoverMiddleX;
-      const isRightOfMiddleX = hoverClientX > hoverMiddleX;
+    // Calculate grid dimensions (assuming 2 columns)
+    const gridColumns = 2;
+    const dragRow = Math.floor(dragIndex / gridColumns);
+    const hoverRow = Math.floor(hoverIndex / gridColumns);
+    const dragCol = dragIndex % gridColumns;
+    const hoverCol = hoverIndex % gridColumns;
 
-      // Dragging downwards
-      if (dragIndex < hoverIndex && isAboveMiddleY && isLeftOfMiddleX) {
-        return;
-      }
+    // Determine if we should move
+    const shouldMove = 
+      (dragIndex < hoverIndex && hoverClientY > hoverMiddleY) ||
+      (dragIndex > hoverIndex && hoverClientY < hoverMiddleY);
 
-      // Dragging upwards
-      if (dragIndex > hoverIndex && isBelowMiddleY && isRightOfMiddleX) {
-        return;
-      }
-
-      // Time to actually perform the action
+    if (shouldMove) {
+      // Perform the move
       moveField(dragIndex, hoverIndex);
 
+      // Mutate the item 
       item.index = hoverIndex;
-    },
-  });
-
- // Combine the drag refs - correct implementation
- const combinedRef = (node) => {
-    // Apply all refs to the node
-    if (node) {
-      ref.current = node;
-      dragToPanel(node);
-      drag(node);
-      drop(node);
     }
-  };
+  },
+});
 
+  const connectDragRef = (el) => {
+    dragRef.current = el;
+    drag(el);
+  };
+  
+  const connectDropRef = (el) => {
+    dropRef.current = el;
+    drop(el);
+  };
+  
+  const connectPanelDragRef = (el) => {
+    panelDragRef.current = el;
+    dragToPanel(el);
+  };
+  
+  // Use a callback ref to connect both references
+  const combineRefs = (node) => {
+    ref.current = node;
+    if (node) {
+      connectDropRef(node);
+      connectDragRef(node);
+      connectPanelDragRef(node);
+    }
+  };    
   // Define animation classes and styles
   const animationClass = dndIsDragging || isDragging || isDraggingToPanel ? "animate-wiggle" : "";
   const transitionClass = "transition-all duration-300 ease-in-out";
@@ -487,7 +531,7 @@ const DraggableField = ({
 
   return (
     <div
-      ref={combinedRef}
+      ref={combineRefs}
       className={`transform ${transitionClass} ${animationClass}`}
       onClick={(e) => {
         // Only trigger select if not dragging

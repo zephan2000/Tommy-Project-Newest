@@ -416,60 +416,83 @@ const CsvDataComponent = () => {
     ];
   };
 
-  // Helper function to extract the correct display value
-  const getDisplayValue = (key, value, activeTab, criteria) => {
-    //console.log("getDisplayValue called", { key, value, activeTab, criteria });
-    // Only process custom splitting if activeTab is 1 or 3
-    // if (activeTab !== 1 && activeTab !== 3) {
-    //   return value;
-    // }
+// Helper function to extract the correct display value
+const getDisplayValue = (key, value, activeTab, criteria) => {
+  // Handle null or undefined values
+  if (value === null || value === undefined) {
+    return "";
+  }
 
-    // For building details keys
-    const buildingDetailKeys = [
-      "AIR_SIDE_EFFICIENCY",
-      "OCCUPANCY_RATE_FOR_EUI",
-      "ACMV_TSE__OR__No_of_ticks",
-    ];
+  // Convert value to string to ensure we can work with it
+  let stringValue = String(value);
 
-    if (buildingDetailKeys.includes(key)) {
-      // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
-      console.log(`Processing key: ${key} with value: ${value}`);
-      // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
-      const parts = value.split("@");
-      console.log("Split parts:", parts);
-      for (let part of parts) {
-        part = part.trim();
-        // Check if the part starts with the criteria.buildingStatus (e.g., "New" or "Existing")
-        if (part.startsWith(criteria.buildingStatus)) {
-          const underscoreIndex = part.indexOf("_");
-          console.log("Found match for parts:", part, parts);
-          if (underscoreIndex !== -1) {
-            const result = part.substring(underscoreIndex + 1).trim();
-            return result; // This should exit the entire function with the result
-          }
+  // For building details keys
+  const buildingDetailKeys = [
+    "AIR_SIDE_EFFICIENCY",
+    "OCCUPANCY_RATE_FOR_EUI",
+    "ACMV_TSE__OR__No_of_ticks",
+  ];
+
+  if (buildingDetailKeys.includes(key)) {
+    // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
+    console.log(`Processing key: ${key} with value: ${stringValue}`);
+    // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
+    const parts = stringValue.split("@");
+    console.log("Split parts:", parts);
+    for (let part of parts) {
+      part = part.trim();
+      // Check if the part starts with the criteria.buildingStatus (e.g., "New" or "Existing")
+      if (part.startsWith(criteria.buildingStatus)) {
+        const underscoreIndex = part.indexOf("_");
+        console.log("Found match for parts:", part, parts);
+        if (underscoreIndex !== -1) {
+          const result = part.substring(underscoreIndex + 1).trim();
+          return formatNewLines(result); // Apply new line formatting to the result
         }
       }
     }
+  }
 
-    // For the ETTV_OR_RETV key
-    if (key === "ETTV_OR_RETV") {
-      // Example value: "NRBE01-1_≤ 40W/m² @NRB01-1_≤ 45W/m²"
-      const parts = value.split("@");
-      for (let part of parts) {
-        part = part.trim();
-        // Check if the part starts with the criteria.ETTV_Criteria (e.g., "NRBE01-1" or "NRB01-1")
-        if (part.startsWith(criteria.ETTV_Criteria)) {
-          const underscoreIndex = part.indexOf("_");
-          if (underscoreIndex !== -1) {
-            return part.substring(underscoreIndex + 1).trim();
-          }
+  // For the ETTV_OR_RETV key
+  if (key === "ETTV_OR_RETV") {
+    // Example value: "NRBE01-1_≤ 40W/m² @NRB01-1_≤ 45W/m²"
+    const parts = stringValue.split("@");
+    for (let part of parts) {
+      part = part.trim();
+      // Check if the part starts with the criteria.ETTV_Criteria (e.g., "NRBE01-1" or "NRB01-1")
+      if (part.startsWith(criteria.ETTV_Criteria)) {
+        const underscoreIndex = part.indexOf("_");
+        if (underscoreIndex !== -1) {
+          const result = part.substring(underscoreIndex + 1).trim();
+          return formatNewLines(result); // Apply new line formatting to the result
         }
       }
     }
+  }
 
-    // Return original value if no conditions match
-    return value;
-  };
+  // Apply new line formatting to the original value if no conditions match
+  return formatNewLines(stringValue);
+};
+
+// Helper function to convert \n to React line breaks
+const formatNewLines = (text) => {
+  if (!text) return text;
+  
+  // Split by \n and join with React line breaks
+  const parts = text.split("\\n");
+  
+  if (parts.length === 1) {
+    return text; // No \n found, return the original text
+  }
+  
+  // Return array of text parts with <br /> elements between them
+  return parts.map((part, index) => (
+    <React.Fragment key={index}>
+      {part}
+      {index < parts.length - 1 && <br />}
+    </React.Fragment>
+  ));
+};
 
   if (loading) {
     return <div className="p-4 text-lg">Loading CSV data...</div>;
