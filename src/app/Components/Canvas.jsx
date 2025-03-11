@@ -14,7 +14,8 @@ import { TextureLoader } from "three";
 import "react-resizable/css/styles.css";
 import { ControlTips } from "./ControlTips";
 // Import the Google Sheets service
-import { fetchSheetData } from './googleSheetService';
+import { fetchSheetData } from "./googleSheetService";
+import EnhancedBuildingDetailsFullscreen from "./EnhancedBuildingDetailsFullscreen";
 
 function StarsBackground() {
   const starTexture = useLoader(TextureLoader, "/assets/cyberpunkBG.png");
@@ -108,55 +109,55 @@ const CsvDataComponent = () => {
   // State for section height adjustment
   const [detailsSectionHeight, setDetailsSectionHeight] = useState(60); // percentage
 
- // Replace the CSV loading with Google Sheets API call
- useEffect(() => {
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      
-      const spreadsheetId = '1ZTdEcpzw6yik9xUFJpNpWhETJwSnjDRk24YcVy4MSOw';
-      const gid = '0'; // Replace with your actual sheet gid
-      const data = await fetchSheetData(spreadsheetId, gid);
-      
-      console.log("Sheet Data loaded:", data);
-      setCsvData(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error loading sheet data:", error);
-      setLoading(false);
-    }
-  };
+  // Replace the CSV loading with Google Sheets API call
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
 
-  fetchData();
-}, []);
+        const spreadsheetId = "1ZTdEcpzw6yik9xUFJpNpWhETJwSnjDRk24YcVy4MSOw";
+        const gid = "0"; // Replace with your actual sheet gid
+        const data = await fetchSheetData(spreadsheetId, gid);
 
-// Process unique values when data loads
-useEffect(() => {
-  if (csvData.length > 0) {
-    // Extract unique values for each field
-    const extractUniqueValues = (field) =>
-      [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
-
-    const newUniqueValues = {
-      Types_of_building: extractUniqueValues("Types_of_building"),
-      Pathway: extractUniqueValues("Pathway"),
-      Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
-        "Does_the_design_have_DCS_OR_DDC_OR_CCS"
-      ),
+        console.log("Sheet Data loaded:", data);
+        setCsvData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error loading sheet data:", error);
+        setLoading(false);
+      }
     };
 
-    setUniqueValues(newUniqueValues);
+    fetchData();
+  }, []);
 
-    // Set initial criteria values
-    setCriteria((prev) => ({
-      ...prev,
-      Types_of_building: newUniqueValues.Types_of_building[0] || "",
-      Pathway: newUniqueValues.Pathway[0] || "",
-      Does_the_design_have_DCS_OR_DDC_OR_CCS:
-        newUniqueValues.Does_the_design_have_DCS_OR_DDC_OR_CCS[0] || "",
-    }));
-  }
-}, [csvData]);
+  // Process unique values when data loads
+  useEffect(() => {
+    if (csvData.length > 0) {
+      // Extract unique values for each field
+      const extractUniqueValues = (field) =>
+        [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
+
+      const newUniqueValues = {
+        Types_of_building: extractUniqueValues("Types_of_building"),
+        Pathway: extractUniqueValues("Pathway"),
+        Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
+          "Does_the_design_have_DCS_OR_DDC_OR_CCS"
+        ),
+      };
+
+      setUniqueValues(newUniqueValues);
+
+      // Set initial criteria values
+      setCriteria((prev) => ({
+        ...prev,
+        Types_of_building: newUniqueValues.Types_of_building[0] || "",
+        Pathway: newUniqueValues.Pathway[0] || "",
+        Does_the_design_have_DCS_OR_DDC_OR_CCS:
+          newUniqueValues.Does_the_design_have_DCS_OR_DDC_OR_CCS[0] || "",
+      }));
+    }
+  }, [csvData]);
 
   // Update criteriaRef when criteria changes
   useEffect(() => {
@@ -527,7 +528,11 @@ useEffect(() => {
       !config.isSimpleNumeric &&
       searchResults &&
       searchResults.length > 0 &&
-      searchResults.every((building) => building[config.field] === "Not Eligible" || building[config.field] === "NA" );
+      searchResults.every(
+        (building) =>
+          building[config.field] === "Not Eligible" ||
+          building[config.field] === "NA"
+      );
     console.log("checking render slider", allNotEligible, searchResults);
 
     if (allNotEligible) {
@@ -650,8 +655,6 @@ useEffect(() => {
     // Then in your render function, ensure consistently formatted values
     const sliderCurrentValue = checkCurrentValue(parseFloat(currentValue));
 
-    
-
     return (
       <div className="mt-6">
         <label className="font-medium block mb-4">
@@ -692,8 +695,8 @@ useEffect(() => {
 
             {/* Colored bar segments with tooltips */}
             <div
-              className="absolute top-0 h-2.5 rounded-l-2xl bg-green-500 hover:brightness-90 cursor-pointer transition-all"
-              style={{ width: `${greenWidth}%`, transition: "width 0.3s ease" }}
+              className="absolute top-0 h-2.5 rounded-l-2xl bg-brown-500 hover:brightness-90 cursor-pointer transition-all"
+              style={{ backgroundColor: "#CD7F32", color: "#000", width: `${greenWidth}%`, transition: "width 0.3s ease" }}
               onMouseEnter={() => setActiveTooltip("green")}
               onMouseLeave={() => setActiveTooltip(null)}
             >
@@ -705,8 +708,10 @@ useEffect(() => {
             </div>
 
             <div
-              className="absolute top-0 h-2.5 bg-yellow-500 hover:brightness-90 cursor-pointer transition-all"
+              className="absolute top-0 h-2.5 hover:brightness-90 cursor-pointer transition-all"
               style={{
+                backgroundColor: "#C0C0C0", 
+                color: "#000", 
                 left: `${greenWidth}%`,
                 width: `${yellowWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
@@ -724,6 +729,8 @@ useEffect(() => {
             <div
               className="absolute top-0 h-2.5 bg-red-500 hover:brightness-90 cursor-pointer transition-all"
               style={{
+                backgroundColor: "#FFD700", 
+                color: "#000", 
                 left: `${greenWidth + yellowWidth}%`,
                 width: `${redWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
@@ -741,6 +748,7 @@ useEffect(() => {
             <div
               className="absolute top-0 h-2.5 rounded-r-2xl bg-blue-500 hover:brightness-90 cursor-pointer transition-all"
               style={{
+                backgroundColor: "#54D6AC",
                 left: `${greenWidth + yellowWidth + redWidth}%`,
                 width: `${blueWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
@@ -781,8 +789,7 @@ useEffect(() => {
                 top: "-3px",
               }}
             >
-              <div className="absolute -left-10 -top-6 w-20 text-center bg-blue-100 text-blue-700 rounded px-2 text-xs font-bold"
-              >
+              <div className="absolute -left-10 -top-6 w-20 text-center bg-blue-100 text-blue-700 rounded px-2 text-xs font-bold">
                 {checkCurrentValue(currentValue)}
                 {config.unit && ` ${config.unit}`}
               </div>
@@ -940,30 +947,13 @@ useEffect(() => {
               )}
 
               {fullscreenSection === "building-details" && (
-                <FullscreenOverlay
+                <EnhancedBuildingDetailsFullscreen
                   title="Building Details"
                   onClose={() => toggleFullscreen(null)}
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {Object.entries(searchResults[activeTab])
-                      .filter(
-                        ([key]) =>
-                          !key.includes("_LOW_COST") &&
-                          !key.includes("_AVG_COST") &&
-                          !key.includes("_HIGH_COST")
-                      )
-                      .map(([key, value]) => (
-                        <div key={key} className="flex p-2 border-b">
-                          <div className="font-medium w-1/2">
-                            {key.replace(/_/g, " ")}:
-                          </div>
-                          <div className="w-1/2">
-                            {getDisplayValue(key, value, activeTab, criteria)}
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </FullscreenOverlay>
+                  buildingData={searchResults[activeTab]}
+                  activeTab={activeTab}
+                  criteria={criteria}
+                />
               )}
 
               {fullscreenSection === "solutions" && (

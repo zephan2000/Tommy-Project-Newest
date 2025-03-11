@@ -1,8 +1,20 @@
-@tailwind base;
+/* Cursor styles */
+.cursor-grab {
+  cursor: grab !important;
+}
+
+.cursor-grabbing {
+  cursor: grabbing !important;
+}
+
+/* Drop target highlight */
+.drop-target-highlight {
+  background-color: rgba(59, 130, 246, 0.1);
+  border: 2px dashed rgba(59, 130, 246, 0.5);
+  border-radius: 0.5rem;
+}@tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 @layer base{
   :root {
@@ -11,10 +23,232 @@
     --muted: 115 115 115;
     --accent: 254 254 91; /* #FEFE5B */
   }
-  
 }
+
+@layer components {
+  /* Add the wiggle animation for dragging */
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+  }
   
+  .animate-wiggle {
+    animation: wiggle 0.5s ease-in-out infinite;
+  }
+}
 
 @layer utilities {
- 
+  /* Smooth transitions for grid layout changes */
+  .grid > * {
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+/* Hide scrollbars by default */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Show scrollbars on hover */
+.hide-scrollbar:hover {
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+  height: 6px;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* For the resizable components */
+.react-resizable {
+  position: relative;
+}
+
+.react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmYwMCIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iNnB4Ij48ZyBvcGFjaXR5PSIwLjMwMiI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9zdmc+');
+  background-position: bottom right;
+  padding: 0 3px 3px 0;
+  transition: opacity 0.2s;
+}
+
+/* Hide resize handles by default */
+.hide-handles .react-resizable-handle {
+  opacity: 0;
+}
+
+/* Show resize handles on hover */
+.show-handles .react-resizable-handle {
+  opacity: 0.7;
+}
+
+.react-resizable-handle:hover {
+  opacity: 1;
+}
+
+.react-resizable-handle-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+.react-resizable-handle-ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
+}
+
+.react-resizable-handle-sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+}
+
+.react-resizable-handle-nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+}
+
+.react-resizable-handle-n {
+  top: 0;
+  left: 50%;
+  margin-left: -10px;
+  cursor: n-resize;
+}
+
+.react-resizable-handle-s {
+  bottom: 0;
+  left: 50%;
+  margin-left: -10px;
+  cursor: s-resize;
+}
+
+.react-resizable-handle-w {
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  cursor: w-resize;
+}
+
+.react-resizable-handle-e {
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
+  cursor: e-resize;
+}
+
+/* Field styles */
+.field-content {
+  transition: all 0.3s ease;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Uniform card styles */
+.uniform-card {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Line clamp for truncating text */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Styles for the selected panel items */
+.detailed-view {
+  max-height: none;
+  overflow-y: auto;
+}
+
+/* Split panel layout */
+.split-panel {
+  display: flex;
+  height: 100%;
+}
+
+/* Resizable panel styles */
+.resizable-panel {
+  position: relative;
+  height: 100%;
+}
+
+/* Cursor styles for resizing */
+.cursor-col-resize {
+  cursor: col-resize !important;
+}
+
+/* Style for the divider when being resized */
+#resizable-divider.active {
+  background-color: #3b82f6;
+}
+
+/* Make sure draggable content shows a move cursor */
+.cursor-move {
+  cursor: move;
+}
+
+/* Add a subtle scale effect when expanding */
+.expandable-field {
+  transform-origin: top left;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.expandable-field.expanded {
+  z-index: 10;
+}
+
+/* Add fancy transition for cards when they're being rearranged */
+.grid-card-transition {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Highlight effect for fields with overflow content */
+.overflow-indicator {
+  position: relative;
+}
+
+.overflow-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: linear-gradient(to top, rgba(255,255,255,0.9), rgba(255,255,255,0));
+  pointer-events: none;
 }
