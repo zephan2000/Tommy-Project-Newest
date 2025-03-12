@@ -95,7 +95,7 @@ const getDisplayValue = (key, value, activeTab, criteria) => {
   // Helper function to convert \n to React line breaks
   const formatNewLines = (text) => {
     if (!text) return text;
-    
+    text = text.replace('$', ',');
     // Split by \n and join with React line breaks
     const parts = text.split("\\n");
     

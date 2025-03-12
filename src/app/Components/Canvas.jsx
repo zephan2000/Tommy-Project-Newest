@@ -55,9 +55,9 @@ const CsvDataComponent = () => {
   // Initial slider ranges
   const [sliderRanges, setSliderRanges] = useState({
     EUI: { min: 1, max: 999 },
-    ASE: { min: 1, max: 999 },
+    ASE: { min: 0, max: 2 },
     ETTV: { min: 1, max: 999 },
-    ACMVTSE: { min: 1, max: 999 },
+    ACMVTSE: { min: 0, max: 2 },
   });
 
   // Configuration for each metric
@@ -477,7 +477,7 @@ const getDisplayValue = (key, value, activeTab, criteria) => {
 // Helper function to convert \n to React line breaks
 const formatNewLines = (text) => {
   if (!text) return text;
-  
+  text = text.replace('$', ',');
   // Split by \n and join with React line breaks
   const parts = text.split("\\n");
   
@@ -791,7 +791,7 @@ const formatNewLines = (text) => {
               type="range"
               min={min}
               max={max}
-              step="1"
+              step="0.01"
               value={sliderCurrentValue}
               onChange={(e) => handleSliderChange(e, metricType)}
               className="w-full h-2 mt-1 appearance-none bg-transparent cursor-pointer relative"
@@ -903,7 +903,7 @@ const formatNewLines = (text) => {
             <div className="flex flex-col">
               <label className="font-medium mb-2">ETTV Criteria:</label>
               <select
-                name="buildingStatus"
+                name="ETTV_Criteria"
                 value={criteria.ETTV_Criteria}
                 onChange={handleChange}
                 className="p-2 border rounded-md bg-white"
