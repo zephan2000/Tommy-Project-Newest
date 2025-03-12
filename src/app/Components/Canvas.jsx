@@ -60,6 +60,13 @@ const CsvDataComponent = () => {
     ACMVTSE: { min: 0, max: 2 },
   });
 
+  const solutionToMetricMap = {
+    eui: "EUI",
+    airside: "ASE",
+    ettv: "ETTV",
+    acmv: "ACMVTSE",
+  };
+
   // Configuration for each metric
   const metricConfig = {
     EUI: {
@@ -74,6 +81,7 @@ const CsvDataComponent = () => {
       field: "AIR_SIDE_EFFICIENCY",
       unit: "kW/RT",
       newKey: "New_≤",
+      isSimpleNumeric: false,
       existingKey: "Existing_≤",
       simpleKey: "≤",
     },
@@ -84,6 +92,7 @@ const CsvDataComponent = () => {
       newKey: "NRBE01-1_ ≤",
       existingKey: "NRB01-1_ ≤",
       simpleKey: "≤",
+      isSimpleNumeric: false,
       newConditionKey: "NRBE01-1",
       existingConditionKey: "NRB01-1",
       conditionField: "ETTV_Criteria",
@@ -93,6 +102,7 @@ const CsvDataComponent = () => {
       field: "ACMV_TSE__OR__No_of_ticks",
       unit: "kW/RT",
       newKey: "New_≤",
+      isSimpleNumeric: false,
       existingKey: "Existing_≤",
       simpleKey: "≤",
     },
@@ -399,100 +409,86 @@ const CsvDataComponent = () => {
         avgKey: "ACMV_TSE_Solutions_AVG_COST",
         highKey: "ACMV_TSE_Solutions_HIGH_COST",
       },
-      {
-        id: "ventilation",
-        name: "Rooms Receiving Natural Ventilation",
-        lowKey: "Rooms_Receiving_Natural_Ventilation_in_a_unit_LOW_COST",
-        avgKey: "Rooms_Receiving_Natural_Ventilation_in_a_unit_AVG_COST",
-        highKey: "Rooms_Receiving_Natural_Ventilation_in_a_unit_HIGH_COST",
-      },
-      {
-        id: "lighting",
-        name: "Lighting Solution",
-        lowKey: "Lighting_LOW_COST",
-        avgKey: "Lighting_AVG_COST",
-        highKey: "Lighting_HIGH_COST",
-      },
     ];
   };
 
-// Helper function to extract the correct display value
-const getDisplayValue = (key, value, activeTab, criteria) => {
-  // Handle null or undefined values
-  if (value === null || value === undefined) {
-    return "";
-  }
+  // Helper function to extract the correct display value
+  const getDisplayValue = (key, value, activeTab, criteria) => {
+    // Handle null or undefined values
+    if (value === null || value === undefined) {
+      return "";
+    }
 
-  // Convert value to string to ensure we can work with it
-  let stringValue = String(value);
+    // Convert value to string to ensure we can work with it
+    let stringValue = String(value);
 
-  // For building details keys
-  const buildingDetailKeys = [
-    "AIR_SIDE_EFFICIENCY",
-    "OCCUPANCY_RATE_FOR_EUI",
-    "ACMV_TSE__OR__No_of_ticks",
-  ];
+    // For building details keys
+    const buildingDetailKeys = [
+      "AIR_SIDE_EFFICIENCY",
+      "OCCUPANCY_RATE_FOR_EUI",
+      "ACMV_TSE__OR__No_of_ticks",
+    ];
 
-  if (buildingDetailKeys.includes(key)) {
-    // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
-    console.log(`Processing key: ${key} with value: ${stringValue}`);
-    // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
-    const parts = stringValue.split("@");
-    console.log("Split parts:", parts);
-    for (let part of parts) {
-      part = part.trim();
-      // Check if the part starts with the criteria.buildingStatus (e.g., "New" or "Existing")
-      if (part.startsWith(criteria.buildingStatus)) {
-        const underscoreIndex = part.indexOf("_");
-        console.log("Found match for parts:", part, parts);
-        if (underscoreIndex !== -1) {
-          const result = part.substring(underscoreIndex + 1).trim();
-          return formatNewLines(result); // Apply new line formatting to the result
+    if (buildingDetailKeys.includes(key)) {
+      // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
+      console.log(`Processing key: ${key} with value: ${stringValue}`);
+      // Example value: "New_≤ 0.8kW/RT@Existing_≤ 0.9kW/RT"
+      const parts = stringValue.split("@");
+      console.log("Split parts:", parts);
+      for (let part of parts) {
+        part = part.trim();
+        // Check if the part starts with the criteria.buildingStatus (e.g., "New" or "Existing")
+        if (part.startsWith(criteria.buildingStatus)) {
+          const underscoreIndex = part.indexOf("_");
+          console.log("Found match for parts:", part, parts);
+          if (underscoreIndex !== -1) {
+            const result = part.substring(underscoreIndex + 1).trim();
+            return formatNewLines(result); // Apply new line formatting to the result
+          }
         }
       }
     }
-  }
 
-  // For the ETTV_OR_RETV key
-  if (key === "ETTV_OR_RETV") {
-    // Example value: "NRBE01-1_≤ 40W/m² @NRB01-1_≤ 45W/m²"
-    const parts = stringValue.split("@");
-    for (let part of parts) {
-      part = part.trim();
-      // Check if the part starts with the criteria.ETTV_Criteria (e.g., "NRBE01-1" or "NRB01-1")
-      if (part.startsWith(criteria.ETTV_Criteria)) {
-        const underscoreIndex = part.indexOf("_");
-        if (underscoreIndex !== -1) {
-          const result = part.substring(underscoreIndex + 1).trim();
-          return formatNewLines(result); // Apply new line formatting to the result
+    // For the ETTV_OR_RETV key
+    if (key === "ETTV_OR_RETV") {
+      // Example value: "NRBE01-1_≤ 40W/m² @NRB01-1_≤ 45W/m²"
+      const parts = stringValue.split("@");
+      for (let part of parts) {
+        part = part.trim();
+        // Check if the part starts with the criteria.ETTV_Criteria (e.g., "NRBE01-1" or "NRB01-1")
+        if (part.startsWith(criteria.ETTV_Criteria)) {
+          const underscoreIndex = part.indexOf("_");
+          if (underscoreIndex !== -1) {
+            const result = part.substring(underscoreIndex + 1).trim();
+            return formatNewLines(result); // Apply new line formatting to the result
+          }
         }
       }
     }
-  }
 
-  // Apply new line formatting to the original value if no conditions match
-  return formatNewLines(stringValue);
-};
+    // Apply new line formatting to the original value if no conditions match
+    return formatNewLines(stringValue);
+  };
 
-// Helper function to convert \n to React line breaks
-const formatNewLines = (text) => {
-  if (!text) return text;
-  text = text.replace('$', ',');
-  // Split by \n and join with React line breaks
-  const parts = text.split("\\n");
-  
-  if (parts.length === 1) {
-    return text; // No \n found, return the original text
-  }
-  
-  // Return array of text parts with <br /> elements between them
-  return parts.map((part, index) => (
-    <React.Fragment key={index}>
-      {part}
-      {index < parts.length - 1 && <br />}
-    </React.Fragment>
-  ));
-};
+  // Helper function to convert \n to React line breaks
+  const formatNewLines = (text) => {
+    if (!text) return text;
+    text = text.replace("$", ",");
+    // Split by \n and join with React line breaks
+    const parts = text.split("\\n");
+
+    if (parts.length === 1) {
+      return text; // No \n found, return the original text
+    }
+
+    // Return array of text parts with <br /> elements between them
+    return parts.map((part, index) => (
+      <React.Fragment key={index}>
+        {part}
+        {index < parts.length - 1 && <br />}
+      </React.Fragment>
+    ));
+  };
 
   if (loading) {
     return <div className="p-4 text-lg">Loading CSV data...</div>;
@@ -544,9 +540,19 @@ const formatNewLines = (text) => {
   };
 
   // Function to render a slider with vertical markers
-  const renderSlider = (metricType) => {
+  const renderMetricBar = (metricType, options = {}) => {
+    const {
+      showSlider = false, // Whether to show range slider
+      height = "2.5rem", // Bar height
+      showVerticalMarkers = true, // Display building value markers
+      showLabels = true, // Show min/max labels
+      showTooltips = true, // Show tooltips on hover
+      barStyle = "default", // Styling option
+    } = options;
+
     const config = metricConfig[metricType];
 
+    // Check if all buildings are not eligible for this metric
     const allNotEligible =
       !config.isSimpleNumeric &&
       searchResults &&
@@ -556,36 +562,26 @@ const formatNewLines = (text) => {
           building[config.field] === "Not Eligible" ||
           building[config.field] === "NA"
       );
-    console.log("checking render slider", allNotEligible, searchResults);
 
     if (allNotEligible) {
       return (
-        <div className="mt-6">
-          <label className="font-medium block mb-4">
-            {config.label}: Not Eligible
-          </label>
-          <div className="p-4 border border-gray-300 rounded text-center">
+        <div className="mt-2">
+          {showSlider && (
+            <label className="font-medium block mb-2">
+              {config.label}: Not Eligible
+            </label>
+          )}
+          <div className="p-2 border border-gray-300 rounded text-center text-sm">
             This metric is not eligible for the selected buildings
           </div>
         </div>
       );
     }
-    // Component to be called during iteration
-    const processBarSegment = (building, index, searchResults) => {
-      const value = parseMetricValue(building, metricType);
-      const position = getMarkerPosition(value, min, max);
-
-      // We're not correctly setting the widths because we're just storing
-      // the absolute positions, not calculating the relative widths
-      return position;
-    };
 
     let currentValue = criteria[`current${metricType}`];
-    // Adjust the min and max values as per requirements
-    // Adjust the min and max values as per requirements
-    let min = 0; // Min will always be 0
+    let min = 0;
 
-    // Sort the buildings by metric value to ensure consistent color bands
+    // Sort buildings by metric value
     const sortedBuildings = searchResults
       ? [...searchResults].sort(
           (a, b) =>
@@ -593,80 +589,67 @@ const formatNewLines = (text) => {
         )
       : [];
 
-    // Get the highest value (index 2 or last value if fewer)
+    // Get highest value
     let highestValue = 0;
     if (sortedBuildings.length > 0) {
       const index = Math.min(2, sortedBuildings.length - 1);
       highestValue = parseMetricValue(sortedBuildings[index], metricType);
     }
 
-    // Set max to 10% above the highest value
+    // Set max to 10% above highest value
     const max = highestValue * 1.1;
 
-    // Calculate positions for the color bands
-    let greenPosition = 0;
-    let yellowPosition = 0;
-    let redPosition = 0;
-    let bluePosition = 100; // Default to full width
+    // Calculate positions for color bands
+    let goldPlusPosition = 0;
+    let platinumPosition = 0;
+    let slePosition = 0;
 
     if (sortedBuildings.length > 0) {
-      if (sortedBuildings.length > 0) {
-        greenPosition = getMarkerPosition(
-          parseMetricValue(sortedBuildings[0], metricType),
-          min,
-          max
-        );
-      }
-
-      if (sortedBuildings.length > 1) {
-        yellowPosition = getMarkerPosition(
-          parseMetricValue(sortedBuildings[1], metricType),
-          min,
-          max
-        );
-      }
-
-      if (sortedBuildings.length > 2) {
-        redPosition = getMarkerPosition(
-          parseMetricValue(sortedBuildings[2], metricType),
-          min,
-          max
-        );
-      }
-
-      // Blue ends at 100%
+      goldPlusPosition = getMarkerPosition(
+        parseMetricValue(sortedBuildings[0], metricType),
+        min,
+        max
+      );
     }
 
-    // Calculate actual widths
-    const greenWidth = greenPosition;
-    const yellowWidth = yellowPosition - greenPosition;
-    const redWidth = redPosition - yellowPosition;
-    const blueWidth = 100 - redPosition;
+    if (sortedBuildings.length > 1) {
+      platinumPosition = getMarkerPosition(
+        parseMetricValue(sortedBuildings[1], metricType),
+        min,
+        max
+      );
+    }
 
-    // Get tooltip labels based on metricType
+    if (sortedBuildings.length > 2) {
+      slePosition = getMarkerPosition(
+        parseMetricValue(sortedBuildings[2], metricType),
+        min,
+        max
+      );
+    }
+
+    // Calculate widths
+    const goldPlusWidth = goldPlusPosition;
+    const platinumWidth = platinumPosition - goldPlusPosition;
+    const sleWidth = slePosition - platinumPosition;
+    const aboveSleWidth = 100 - slePosition; // Add this line for the "above SLE" width
+
     const getTooltipLabels = () => {
       switch (metricType) {
         case "EUI":
           return {
-            green: "GoldPlus",
-            yellow: "Platinum",
-            red: "SLE",
-            blue: "Above SLE",
+            goldPlus: "GoldPlus",
+            platinum: "Platinum",
+            sle: "SLE",
+            aboveSle: "Above SLE",
           };
-        case "WPR":
-          return {
-            green: "Excellent",
-            yellow: "Good",
-            red: "Average",
-            blue: "Below Average",
-          };
-        // Add more cases for other metricTypes
+        // Add other cases as needed
         default:
           return {
-            green: "Best",
-            yellow: "Better",
-            red: "Good",
-            blue: "Standard",
+            goldPlus: "Best",
+            platinum: "Better",
+            sle: "Good",
+            aboveSle: "Standard",
           };
       }
     };
@@ -677,31 +660,39 @@ const formatNewLines = (text) => {
     };
     // Then in your render function, ensure consistently formatted values
     const sliderCurrentValue = checkCurrentValue(parseFloat(currentValue));
+    const currentPosition = getMarkerPosition(sliderCurrentValue, min, max);
 
     return (
-      <div className="mt-6">
-        <label className="font-medium block mb-4">
-          {config.label}: {currentValue}
-          {config.unit && ` ${config.unit}`}
-        </label>
+      <div className={showSlider ? "mt-6" : "mt-2"}>
+        {showSlider && (
+          <label className="font-medium block mb-4">
+            {config.label}: {currentValue}
+            {config.unit && ` ${config.unit}`}
+          </label>
+        )}
+
         <div className="relative">
           {/* Min and max values display */}
-          <div className="flex justify-between text-xs mt-1 px-1 pb-2">
-            <span>
-              Min: {min}
-              {config.unit && ` ${config.unit}`}
-            </span>
-            <span>
-              Max: {max.toFixed(3)}
-              {config.unit && ` ${config.unit}`}
-            </span>
-          </div>
-          <div className="relative" style={{ height: "2.5rem", width: "100%" }}>
+          {showLabels && (
+            <div className="flex justify-between text-xs mt-1 px-1 pb-2">
+              <span>
+                Min: {min}
+                {config.unit && ` ${config.unit}`}
+              </span>
+              <span>
+                Max: {max.toFixed(2)}
+                {config.unit && ` ${config.unit}`}
+              </span>
+            </div>
+          )}
+
+          <div className="relative" style={{ height: height, width: "100%" }}>
             {/* Vertical line markers for building values */}
-            {searchResults &&
+            {showVerticalMarkers &&
+              searchResults &&
               searchResults.map((building, index) => {
-                const position = processBarSegment(building, index);
-                console.log("checking marker position" + building + index);
+                const value = parseMetricValue(building, metricType);
+                const position = getMarkerPosition(value, min, max);
                 if (position < 0) return null;
                 return (
                   <div
@@ -716,99 +707,103 @@ const formatNewLines = (text) => {
                 );
               })}
 
-            {/* Colored bar segments with tooltips */}
+            {/* Colored bar segments */}
             <div
-              className="absolute top-0 h-2.5 rounded-l-2xl bg-brown-500 hover:brightness-90 cursor-pointer transition-all"
-              style={{ backgroundColor: "#CD7F32", color: "#000", width: `${greenWidth}%`, transition: "width 0.3s ease" }}
-              onMouseEnter={() => setActiveTooltip("green")}
-              onMouseLeave={() => setActiveTooltip(null)}
+              className="absolute top-0 h-6 rounded-l-2xl hover:brightness-90 transition-all"
+              style={{
+                backgroundColor: "#CD7F32", // Bronze/Gold color
+                width: `${goldPlusWidth}%`,
+                transition: "width 0.3s ease",
+              }}
+              onMouseEnter={() => showTooltips && setActiveTooltip("goldPlus")}
+              onMouseLeave={() => showTooltips && setActiveTooltip(null)}
             >
-              {activeTooltip === "green" && (
+              {showTooltips && activeTooltip === "goldPlus" && (
                 <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
-                  {tooltipLabels.green}
+                  {tooltipLabels.goldPlus}
                 </div>
               )}
             </div>
 
             <div
-              className="absolute top-0 h-2.5 hover:brightness-90 cursor-pointer transition-all"
+              className="absolute top-0 h-6 hover:brightness-90 transition-all"
               style={{
-                backgroundColor: "#C0C0C0", 
-                color: "#000", 
-                left: `${greenWidth}%`,
-                width: `${yellowWidth}%`,
+                backgroundColor: "#C0C0C0", // Silver color
+                left: `${goldPlusWidth}%`,
+                width: `${platinumWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
               }}
-              onMouseEnter={() => setActiveTooltip("yellow")}
-              onMouseLeave={() => setActiveTooltip(null)}
+              onMouseEnter={() => showTooltips && setActiveTooltip("platinum")}
+              onMouseLeave={() => showTooltips && setActiveTooltip(null)}
             >
-              {activeTooltip === "yellow" && (
+              {showTooltips && activeTooltip === "platinum" && (
                 <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
-                  {tooltipLabels.yellow}
+                  {tooltipLabels.platinum}
                 </div>
               )}
             </div>
 
             <div
-              className="absolute top-0 h-2.5 bg-red-500 hover:brightness-90 cursor-pointer transition-all"
+              className="absolute top-0 h-6 hover:brightness-90 transition-all"
               style={{
-                backgroundColor: "#FFD700", 
-                color: "#000", 
-                left: `${greenWidth + yellowWidth}%`,
-                width: `${redWidth}%`,
+                backgroundColor: "#FFD700", // Gold color
+                left: `${goldPlusWidth + platinumWidth}%`,
+                width: `${sleWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
               }}
-              onMouseEnter={() => setActiveTooltip("red")}
-              onMouseLeave={() => setActiveTooltip(null)}
+              onMouseEnter={() => showTooltips && setActiveTooltip("sle")}
+              onMouseLeave={() => showTooltips && setActiveTooltip(null)}
             >
-              {activeTooltip === "red" && (
+              {showTooltips && activeTooltip === "sle" && (
                 <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
-                  {tooltipLabels.red}
+                  {tooltipLabels.sle}
                 </div>
               )}
             </div>
 
+            {/* Add the above SLE segment */}
             <div
-              className="absolute top-0 h-2.5 rounded-r-2xl bg-blue-500 hover:brightness-90 cursor-pointer transition-all"
+              className="absolute top-0 h-6 rounded-r-2xl hover:brightness-90 transition-all"
               style={{
-                backgroundColor: "#54D6AC",
-                left: `${greenWidth + yellowWidth + redWidth}%`,
-                width: `${blueWidth}%`,
+                backgroundColor: "#54D6AC", // Teal/aqua color
+                left: `${goldPlusWidth + platinumWidth + sleWidth}%`,
+                width: `${aboveSleWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
               }}
-              onMouseEnter={() => setActiveTooltip("blue")}
-              onMouseLeave={() => setActiveTooltip(null)}
+              onMouseEnter={() => showTooltips && setActiveTooltip("aboveSle")}
+              onMouseLeave={() => showTooltips && setActiveTooltip(null)}
             >
-              {activeTooltip === "blue" && (
+              {showTooltips && activeTooltip === "aboveSle" && (
                 <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white shadow-lg rounded p-2 text-xs z-10 whitespace-nowrap">
-                  {tooltipLabels.blue}
+                  {tooltipLabels.aboveSle}
                 </div>
               )}
             </div>
 
-            {/* Range input with custom line selector */}
-            <input
-              type="range"
-              min={min}
-              max={max}
-              step="0.01"
-              value={sliderCurrentValue}
-              onChange={(e) => handleSliderChange(e, metricType)}
-              className="w-full h-2 mt-1 appearance-none bg-transparent cursor-pointer relative"
-              style={{
-                // Custom styling for the line selector
-                "--thumb-appearance": "none",
-                "--thumb-width": "4px",
-                "--thumb-height": "16px",
-                "--thumb-color": "black",
-              }}
-            />
+            {/* Slider input (conditionally rendered) */}
+            {showSlider && (
+              <input
+                type="range"
+                min={min}
+                max={max}
+                step="0.01"
+                value={sliderCurrentValue}
+                onChange={(e) => handleSliderChange(e, metricType)}
+                className="w-full h-2 mt-1 appearance-none bg-transparent cursor-pointer relative"
+                style={{
+                  "--thumb-appearance": "none",
+                  "--thumb-width": "4px",
+                  "--thumb-height": "16px",
+                  "--thumb-color": "black",
+                }}
+              />
+            )}
 
             {/* Current value display */}
             <div
               className="absolute w-px h-8 bg-blue-700 pointer-events-none"
               style={{
-                left: `${getMarkerPosition(sliderCurrentValue, min, max)}%`,
+                left: `${currentPosition}%`,
                 top: "-3px",
               }}
             >
@@ -916,7 +911,12 @@ const formatNewLines = (text) => {
 
           <div className="space-y-6">
             {Object.keys(metricConfig).map((metricType) =>
-              renderSlider(metricType)
+              renderMetricBar(metricType, {
+                showSlider: true,
+                height: "2.5rem",
+                showVerticalMarkers: true,
+                showTooltips: true,
+              })
             )}
           </div>
 
@@ -985,36 +985,17 @@ const formatNewLines = (text) => {
                   onClose={() => toggleFullscreen(null)}
                 >
                   <div className="space-y-8">
-                    {/* Main EUI bars */}
-                    <div className="mb-8">
-                      <h4 className="text-xl font-bold mb-4">EUI Values</h4>
-                      <div className="relative">
-                        <div className="h-8 w-full flex">
-                          <div className="h-8 flex-1 bg-green-500"></div>
-                          <div className="h-8 flex-1 bg-yellow-500"></div>
-                          <div className="h-8 flex-1 bg-red-500"></div>
-                        </div>
-                        <div className="flex justify-between text-sm mt-1">
-                          <span>115</span>
-                          <span>120</span>
-                          <span>145</span>
-                        </div>
-                      </div>
-                    </div>
-
                     {/* Solution category bars with toggleable solutions */}
                     <div className="space-y-12">
                       {getSolutionCategories().map((category) => (
-                        <div key={category.id} className="border-t pt-6">
-                          <div className="flex items-center justify-between mb-4">
-                            <h4 className="text-xl font-bold">
-                              {category.name}
-                            </h4>
+                        <div key={category.id} className="border-t pt-3">
+                          <div className="flex items-center justify-between mb-1">
+                            <h4 className="font-medium">{category.name}</h4>
                             <button
                               onClick={() =>
                                 toggleSolutionVisibility(category.id)
                               }
-                              className="px-3 py-2 bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
+                              className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs hover:bg-blue-200"
                             >
                               {visibleSolutions[category.id]
                                 ? "Hide Solutions"
@@ -1022,19 +1003,15 @@ const formatNewLines = (text) => {
                             </button>
                           </div>
 
-                          {/* Category bar */}
-                          <div className="relative mb-4">
-                            <div className="h-8 w-full flex">
-                              <div className="h-8 flex-1 bg-green-500"></div>
-                              <div className="h-8 flex-1 bg-yellow-500"></div>
-                              <div className="h-8 flex-1 bg-red-500"></div>
-                            </div>
-                            <div className="flex justify-between text-sm mt-1">
-                              <span>115</span>
-                              <span>120</span>
-                              <span>145</span>
-                            </div>
-                          </div>
+                          {/* Use the unified function with different options */}
+                          {solutionToMetricMap[category.id] &&
+                            renderMetricBar(solutionToMetricMap[category.id], {
+                              showSlider: false,
+                              height: "1.5rem",
+                              showVerticalMarkers: false,
+                              showLabels: false,
+                              showTooltips: false,
+                            })}
 
                           {/* Togglable solutions */}
                           {visibleSolutions[category.id] && (
@@ -1043,30 +1020,42 @@ const formatNewLines = (text) => {
                                 <h5 className="font-medium text-green-800 mb-3">
                                   Low Cost
                                 </h5>
-                                <p>
-                                  {searchResults[activeTab][category.lowKey] ||
-                                    "N/A"}
-                                </p>
+                                <div>
+                                  {getDisplayValue(
+                                    category.lowKey,
+                                    searchResults[activeTab][category.lowKey],
+                                    activeTab,
+                                    criteria
+                                  ) || "N/A"}
+                                </div>
                               </div>
 
                               <div className="bg-yellow-100 p-4 rounded-md">
                                 <h5 className="font-medium text-yellow-800 mb-3">
                                   Average Cost
                                 </h5>
-                                <p>
-                                  {searchResults[activeTab][category.avgKey] ||
-                                    "N/A"}
-                                </p>
+                                <div>
+                                  {getDisplayValue(
+                                    category.avgKey,
+                                    searchResults[activeTab][category.avgKey],
+                                    activeTab,
+                                    criteria
+                                  ) || "N/A"}
+                                </div>
                               </div>
 
                               <div className="bg-red-100 p-4 rounded-md">
                                 <h5 className="font-medium text-red-800 mb-3">
                                   High Cost
                                 </h5>
-                                <p>
-                                  {searchResults[activeTab][category.highKey] ||
-                                    "N/A"}
-                                </p>
+                                <div>
+                                  {getDisplayValue(
+                                    category.highKey,
+                                    searchResults[activeTab][category.highKey],
+                                    activeTab,
+                                    criteria
+                                  ) || "N/A"}
+                                </div>
                               </div>
                             </div>
                           )}
@@ -1182,19 +1171,15 @@ const formatNewLines = (text) => {
                             </button>
                           </div>
 
-                          {/* Category bar */}
-                          <div className="relative mb-2">
-                            <div className="h-6 w-full flex">
-                              <div className="h-6 flex-1 rounded-l-2xl bg-green-500"></div>
-                              <div className="h-6 flex-1 bg-yellow-500"></div>
-                              <div className="h-6 flex-1 rounded-r-2xl bg-red-500"></div>
-                            </div>
-                            <div className="flex justify-between text-xs mt-1">
-                              <span>115</span>
-                              <span>120</span>
-                              <span>145</span>
-                            </div>
-                          </div>
+                          {/* Use the unified function with different options */}
+                          {solutionToMetricMap[category.id] &&
+                            renderMetricBar(solutionToMetricMap[category.id], {
+                              showSlider: false,
+                              height: "1.5rem",
+                              showVerticalMarkers: false,
+                              showLabels: true,
+                              showTooltips: true,
+                            })}
 
                           {/* Togglable solutions */}
                           {visibleSolutions[category.id] && (
@@ -1203,30 +1188,42 @@ const formatNewLines = (text) => {
                                 <h5 className="font-medium text-green-800 mb-1">
                                   Low Cost
                                 </h5>
-                                <p className="overflow-y-auto max-h-32">
-                                  {searchResults[activeTab][category.lowKey] ||
-                                    "N/A"}
-                                </p>
+                                <div className="overflow-y-auto max-h-32">
+                                  {getDisplayValue(
+                                    category.lowKey,
+                                    searchResults[activeTab][category.lowKey],
+                                    activeTab,
+                                    criteria
+                                  ) || "N/A"}
+                                </div>
                               </div>
 
                               <div className="bg-yellow-100 p-2 rounded-md text-sm">
                                 <h5 className="font-medium text-yellow-800 mb-1">
                                   Average Cost
                                 </h5>
-                                <p className="overflow-y-auto max-h-32">
-                                  {searchResults[activeTab][category.avgKey] ||
-                                    "N/A"}
-                                </p>
+                                <div className="overflow-y-auto max-h-32">
+                                  {getDisplayValue(
+                                    category.avgKey,
+                                    searchResults[activeTab][category.avgKey],
+                                    activeTab,
+                                    criteria
+                                  ) || "N/A"}
+                                </div>
                               </div>
 
                               <div className="bg-red-100 p-2 rounded-md text-sm">
                                 <h5 className="font-medium text-red-800 mb-1">
                                   High Cost
                                 </h5>
-                                <p className="overflow-y-auto max-h-32">
-                                  {searchResults[activeTab][category.highKey] ||
-                                    "N/A"}
-                                </p>
+                                <div className="overflow-y-auto max-h-32">
+                                  {getDisplayValue(
+                                    category.highKey,
+                                    searchResults[activeTab][category.highKey],
+                                    activeTab,
+                                    criteria
+                                  ) || "N/A"}
+                                </div>
                               </div>
                             </div>
                           )}
