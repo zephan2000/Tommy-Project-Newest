@@ -638,18 +638,18 @@ const CsvDataComponent = () => {
       switch (metricType) {
         case "EUI":
           return {
-            goldPlus: "GoldPlus",
+            goldPlus: "SLE",
             platinum: "Platinum",
-            sle: "SLE",
+            sle: "GoldPlus",
             aboveSle: "Does Not Qualify",
           };
         // Add other cases as needed
         default:
           return {
-            goldPlus: "Best",
+            goldPlus: "Qualify",
             platinum: "Better",
             sle: "Good",
-            aboveSle: "Standard",
+            aboveSle: "Does Not Qualify",
           };
       }
     };
