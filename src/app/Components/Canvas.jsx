@@ -641,7 +641,7 @@ const CsvDataComponent = () => {
             goldPlus: "GoldPlus",
             platinum: "Platinum",
             sle: "SLE",
-            aboveSle: "Above SLE",
+            aboveSle: "Does Not Qualify",
           };
         // Add other cases as needed
         default:
@@ -765,7 +765,7 @@ const CsvDataComponent = () => {
             <div
               className="absolute top-0 h-6 rounded-r-2xl hover:brightness-90 transition-all"
               style={{
-                backgroundColor: "#54D6AC", // Teal/aqua color
+                backgroundColor: "#FF0000", // Teal/aqua color #54D6AC, Red Colour #FF0000
                 left: `${goldPlusWidth + platinumWidth + sleWidth}%`,
                 width: `${aboveSleWidth}%`,
                 transition: "left 0.3s ease, width 0.3s ease",
