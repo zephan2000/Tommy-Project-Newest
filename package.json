@@ -13,6 +13,7 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@emailjs/browser": "^4.2.0",
+    "@react-pdf/renderer": "^4.3.0",
     "@react-three/drei": "^9.99.5",
     "@react-three/fiber": "^8.15.16",
     "clsx": "^2.1.0",

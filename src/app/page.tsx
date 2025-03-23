@@ -1,6 +1,7 @@
 "use client";
 
 import { Scene } from "./Components/Scene";
+import { GreenmarkDashboard } from "./Components/GreenmarkApp";
 import React from "react";
 
 export default function Home() {
@@ -8,7 +9,8 @@ export default function Home() {
     <main className="relative">
       {/* Render Scene with a high z-index so it appears on top */}
       <div className="absolute inset-0 z-20">
-        <Scene />
+        <GreenmarkDashboard />
+        {/* <Scene/> */}
       </div>
 
       {/* Text section with a lower z-index */}
