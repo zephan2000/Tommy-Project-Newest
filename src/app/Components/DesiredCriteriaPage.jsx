@@ -30,7 +30,7 @@ useEffect(() => {
   if (currentStep < 6) {
     setCurrentStep(6);
   }
-}, [setCurrentStep]); // Remove currentStep from dependencies
+}, [setCurrentStep, currentStep]); // Remove currentStep from dependencies
 
   // If step moves beyond 9, navigate to next page
   useEffect(() => {

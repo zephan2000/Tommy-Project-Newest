@@ -1,27 +1,15 @@
 // In HeroPage.jsx, modify the function signature and motion div properties
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useGreenmark } from "./GreenmarkContext";
 
 function HeroPage({ onNavigate, direction = "forward" }) {
   const { setCriteria, setStepsCompleted, setSearchResults } = useGreenmark();
 
-  // Add keyboard listener for the cheatcode
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key.toLowerCase() === "v") {
-        setDefaultValues();
-        onNavigate("building-search");
-      }
-    };
-
-    window.addEventListener("keypress", handleKeyPress);
-    return () => window.removeEventListener("keypress", handleKeyPress);
-  }, [onNavigate]);
 
   // Function to set default values
-  const setDefaultValues = () => {
+  const setDefaultValues = useCallback(() => {
     // Define default criteria
     const defaultCriteria = {
       Types_of_building: "Office Buildings (Large) (GFA ≥ 15$000sqm)",
@@ -46,11 +34,24 @@ function HeroPage({ onNavigate, direction = "forward" }) {
     setStepsCompleted(allStepsCompleted);
 
     console.log("🔮 Cheatcode activated! Default values loaded.");
-  };
+  }, [setCriteria, setStepsCompleted]); // Add dependencies
 
   // Determine initial and exit animation values based on direction
   const initialX = direction === "forward" ? "100%" : "-100%";
   const exitX = direction === "forward" ? "-100%" : "100%";
+
+    // Add keyboard listener for the cheatcode
+    useEffect(() => {
+      const handleKeyPress = (e) => {
+        if (e.key.toLowerCase() === "v") {
+          setDefaultValues();
+          onNavigate("building-search");
+        }
+      };
+  
+      window.addEventListener("keypress", handleKeyPress);
+      return () => window.removeEventListener("keypress", handleKeyPress);
+    }, [onNavigate, setDefaultValues]);
 
   return (
     <div className="page-container">
@@ -61,7 +62,7 @@ function HeroPage({ onNavigate, direction = "forward" }) {
               Greenmark Certification Dashboard
             </h1>
             <p className="text-xl text-[#627E75] mb-12">
-              Understand your building's energy efficiency and get tailored
+              Understand your building&apos;s energy efficiency and get tailored
               solutions in minutes
             </p>
             <button
@@ -92,7 +93,7 @@ function HeroPage({ onNavigate, direction = "forward" }) {
                   Sustainable Building Solutions
                 </h3>
                 <p className="text-[#627E75] mt-2">
-                  Find the most cost-effective ways to improve your building's
+                  Find the most cost-effective ways to improve your building&apos;s
                   energy performance
                 </p>
               </div>
@@ -103,7 +104,7 @@ function HeroPage({ onNavigate, direction = "forward" }) {
         {/* Hidden cheatcode hint - only visible in development */}
         {process.env.NODE_ENV === "development" && (
           <div className="fixed bottom-2 right-2 text-xs text-gray-400 opacity-30">
-            Press 'V' to skip to results
+            Press &apos;V&apos; to skip to results
           </div>
         )}
       </div>

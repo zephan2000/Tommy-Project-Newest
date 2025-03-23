@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Eye, EyeOff } from "lucide-react"; // Using lucide icons for visibility toggles
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import React from "react";
 import { csvJSON } from "./BuildingTypeData"; // your CSV parsing function
 import { DraggableScroll } from "./DraggableScroll";
@@ -66,8 +66,8 @@ const CsvDataComponent = () => {
     acmv: "ACMVTSE",
   };
 
-  // Configuration for each metric
-  const metricConfig = {
+  // Memoize the metricConfig object so it doesn't change on every render
+  const metricConfig = useMemo(() => ({
     EUI: {
       label: "Current EUI Value",
       field: "Energy_Use_Intensity",
@@ -105,7 +105,7 @@ const CsvDataComponent = () => {
       existingKey: "Existing_≤",
       simpleKey: "≤",
     },
-  };
+  }), []); // Empty dependency array means this only gets created once
 
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
@@ -217,8 +217,8 @@ const CsvDataComponent = () => {
     criteria.Pathway,
     criteria.Does_the_design_have_DCS_OR_DDC_OR_CCS,
   ]);
-  // Update slider ranges based on search results
-  useEffect(() => {
+   // Now update the useEffect that was causing the warning
+   useEffect(() => {
     // Don't return early within hook bodies - this can cause hooks ordering issues
     if (searchResults && searchResults.length > 0) {
       const calculateRange = (values) => {
@@ -243,7 +243,7 @@ const CsvDataComponent = () => {
 
       setSliderRanges(newRanges);
     }
-  }, [searchResults, criteria.buildingStatus, criteria.ETTV_Criteria]);
+  }, [searchResults, criteria.buildingStatus, criteria.ETTV_Criteria, metricConfig, parseMetricValue]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -285,8 +285,8 @@ const CsvDataComponent = () => {
     setDetailsSectionHeight(newHeight);
   };
 
-  // Generalized function to parse values for any metric
-  const parseMetricValue = (building, metricType) => {
+   // Wrap parseMetricValue in useCallback
+   const parseMetricValue = useCallback((building, metricType) => {
     const config = metricConfig[metricType];
     const value = building[config.field];
 
@@ -347,7 +347,7 @@ const CsvDataComponent = () => {
     }
 
     return null;
-  };
+  }, [metricConfig, criteria]); // Dependencies are metricConfig and criteria
 
   // Function to format display values
   const getFormattedValue = (building, metricType) => {

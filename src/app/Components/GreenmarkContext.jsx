@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { fetchSheetData } from "./googleSheetService";
 
 // Create the context
@@ -56,7 +56,7 @@ export const GreenmarkProvider = ({ children }) => {
   const [visibleSolutions, setVisibleSolutions] = useState({});
 
   // Configuration for each metric
-  const metricConfig = {
+  const metricConfig = useMemo(() => ({
     EUI: {
       label: "Current EUI Value",
       field: "Energy_Use_Intensity",
@@ -106,7 +106,7 @@ export const GreenmarkProvider = ({ children }) => {
       title: "ACMV TSE Value",
       description: "Air Conditioning & Mechanical Ventilation System Efficiency"
     },
-  };
+  }), []);
 
   // Mapping of steps to criteria
   const stepCriteriaMap = {
@@ -171,107 +171,8 @@ export const GreenmarkProvider = ({ children }) => {
     // Reset show results flag
     setShowResults(false);
   };
-
-  // Load data from Google Sheets
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const spreadsheetId = "1ZTdEcpzw6yik9xUFJpNpWhETJwSnjDRk24YcVy4MSOw";
-        const gid = "0"; // Replace with your actual sheet gid
-        const data = await fetchSheetData(spreadsheetId, gid);
-        console.log("Sheet Data loaded:", data);
-        setCsvData(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error loading sheet data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // Process unique values when data loads
-  useEffect(() => {
-    if (csvData.length > 0) {
-      // Extract unique values for each field
-      const extractUniqueValues = (field) =>
-        [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
-
-      const newUniqueValues = {
-        ...uniqueValues,
-        Types_of_building: extractUniqueValues("Types_of_building"),
-        Pathway: extractUniqueValues("Pathway"),
-        Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
-          "Does_the_design_have_DCS_OR_DDC_OR_CCS"
-        ),
-      };
-
-      setUniqueValues(newUniqueValues);
-    }
-  }, [csvData]);
-
-  // Update criteriaRef when criteria changes
-  useEffect(() => {
-    criteriaRef.current = criteria;
-  }, [criteria]);
-
-  // Continuous search function
-  useEffect(() => {
-    if (csvData && csvData.length > 0) {
-      // Perform search with current criteria
-      const currentCriteria = criteriaRef.current;
-      
-      // Find all buildings that match the selected criteria
-      const foundBuildings = csvData.filter(
-        (item) =>
-          (currentCriteria.Types_of_building === "" || 
-           item.Types_of_building === currentCriteria.Types_of_building) &&
-          (currentCriteria.Pathway === "" || 
-           item.Pathway === currentCriteria.Pathway) &&
-          (currentCriteria.Does_the_design_have_DCS_OR_DDC_OR_CCS === "" || 
-           item.Does_the_design_have_DCS_OR_DDC_OR_CCS === currentCriteria.Does_the_design_have_DCS_OR_DDC_OR_CCS)
-      );
-
-      console.log("Auto-updated search results:", foundBuildings);
-      setSearchResults(foundBuildings);
-    }
-  }, [
-    csvData,
-    criteria.Types_of_building,
-    criteria.Pathway,
-    criteria.Does_the_design_have_DCS_OR_DDC_OR_CCS,
-  ]);
-
-  // Update slider ranges based on search results
-  useEffect(() => {
-    if (searchResults && searchResults.length > 0) {
-      const calculateRange = (values) => {
-        const filteredValues = values.filter((v) => v !== null);
-        if (filteredValues.length === 0) return { min: 1, max: 999 };
-
-        const min = Math.max(1, Math.floor(Math.min(...filteredValues) * 0.8));
-        const max = Math.ceil(Math.max(...filteredValues) * 1.2);
-        return { min, max };
-      };
-
-      const newRanges = {};
-
-      // Calculate ranges for all metrics
-      Object.keys(metricConfig).forEach((metricType) => {
-        const values = searchResults.map((building) =>
-          parseMetricValue(building, metricType)
-        );
-        newRanges[metricType] = calculateRange(values);
-      });
-
-      setSliderRanges(newRanges);
-    }
-  }, [searchResults, criteria.buildingStatus, criteria.ETTV_Criteria]);
-
-  // Generalized function to parse values for any metric
-  const parseMetricValue = (building, metricType) => {
+   // Generalized function to parse values for any metric
+   const parseMetricValue = useCallback((building, metricType) => {
     const config = metricConfig[metricType];
     const value = building[config.field];
 
@@ -330,7 +231,107 @@ export const GreenmarkProvider = ({ children }) => {
     }
 
     return null;
-  };
+  }, [metricConfig, criteria]); // Add dependencies
+
+  // Load data from Google Sheets
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const spreadsheetId = "1ZTdEcpzw6yik9xUFJpNpWhETJwSnjDRk24YcVy4MSOw";
+        const gid = "0"; // Replace with your actual sheet gid
+        const data = await fetchSheetData(spreadsheetId, gid);
+        console.log("Sheet Data loaded:", data);
+        setCsvData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error loading sheet data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Process unique values when data loads
+  useEffect(() => {
+    if (csvData.length > 0) {
+      // Extract unique values for each field
+      const extractUniqueValues = (field) =>
+        [...new Set(csvData.map((item) => item[field]))].filter(Boolean);
+
+      const newUniqueValues = {
+        ...uniqueValues,
+        Types_of_building: extractUniqueValues("Types_of_building"),
+        Pathway: extractUniqueValues("Pathway"),
+        Does_the_design_have_DCS_OR_DDC_OR_CCS: extractUniqueValues(
+          "Does_the_design_have_DCS_OR_DDC_OR_CCS"
+        ),
+      };
+
+      setUniqueValues(newUniqueValues);
+    }
+  }, [csvData, uniqueValues]);
+
+  // Update criteriaRef when criteria changes
+  useEffect(() => {
+    criteriaRef.current = criteria;
+  }, [criteria]);
+
+  // Continuous search function
+  useEffect(() => {
+    if (csvData && csvData.length > 0) {
+      // Perform search with current criteria
+      const currentCriteria = criteriaRef.current;
+      
+      // Find all buildings that match the selected criteria
+      const foundBuildings = csvData.filter(
+        (item) =>
+          (currentCriteria.Types_of_building === "" || 
+           item.Types_of_building === currentCriteria.Types_of_building) &&
+          (currentCriteria.Pathway === "" || 
+           item.Pathway === currentCriteria.Pathway) &&
+          (currentCriteria.Does_the_design_have_DCS_OR_DDC_OR_CCS === "" || 
+           item.Does_the_design_have_DCS_OR_DDC_OR_CCS === currentCriteria.Does_the_design_have_DCS_OR_DDC_OR_CCS)
+      );
+
+      console.log("Auto-updated search results:", foundBuildings);
+      setSearchResults(foundBuildings);
+    }
+  }, [
+    csvData,
+    criteria.Types_of_building,
+    criteria.Pathway,
+    criteria.Does_the_design_have_DCS_OR_DDC_OR_CCS,
+  ]);
+
+  // Update slider ranges based on search results
+  useEffect(() => {
+    if (searchResults && searchResults.length > 0) {
+      const calculateRange = (values) => {
+        const filteredValues = values.filter((v) => v !== null);
+        if (filteredValues.length === 0) return { min: 1, max: 999 };
+
+        const min = Math.max(1, Math.floor(Math.min(...filteredValues) * 0.8));
+        const max = Math.ceil(Math.max(...filteredValues) * 1.2);
+        return { min, max };
+      };
+
+      const newRanges = {};
+
+      // Calculate ranges for all metrics
+      Object.keys(metricConfig).forEach((metricType) => {
+        const values = searchResults.map((building) =>
+          parseMetricValue(building, metricType)
+        );
+        newRanges[metricType] = calculateRange(values);
+      });
+
+      setSliderRanges(newRanges);
+    }
+  }, [searchResults, criteria.buildingStatus, criteria.ETTV_Criteria, metricConfig, parseMetricValue]);
+
+ 
 
   // Function to get marker position for sliders
   const getMarkerPosition = (value, min, max) => {
