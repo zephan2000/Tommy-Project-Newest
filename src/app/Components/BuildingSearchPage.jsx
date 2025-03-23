@@ -822,7 +822,7 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
                                   <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2 mb-4">
                                     <div className="bg-[#E8F4F0] p-2 rounded-md text-sm">
                                       <h5 className="font-medium text-[#28A06A] mb-1">
-                                        Low Cost  <span className="text-sm font-normal">(&lt;5 Yrs ROI)</span>
+                                        Low Cost  <span className="text-s font-normal">(&lt;5 Yrs ROI)</span>
                                       </h5>
                                       <div className="overflow-y-auto max-h-32 text-[#627E75]">
                                         {getDisplayValue(
@@ -836,7 +836,7 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
 
                                     <div className="bg-[#FFF9E6] p-2 rounded-md text-sm">
                                       <h5 className="font-medium text-[#D9A50D] mb-1">
-                                        Average Cost <span className="text-sm font-normal">(&lt;10 Yrs ROI)</span>
+                                        Average Cost <span className="text-s font-normal">(&lt;10 Yrs ROI)</span>
                                       </h5>
                                       <div className="overflow-y-auto max-h-32 text-[#627E75]">
                                         {getDisplayValue(
@@ -850,7 +850,7 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
 
                                     <div className="bg-[#FFF0ED] p-2 rounded-md text-sm">
                                       <h5 className="font-medium text-[#E06D44] mb-1">
-                                      High Cost <span className="text-sm font-normal">(&lt;20 Yrs ROI)</span>
+                                      High Cost <span className="text-s font-normal">(&lt;20 Yrs ROI)</span>
                                       </h5>
                                       <div className="overflow-y-auto max-h-32 text-[#627E75]">
                                         {getDisplayValue(
