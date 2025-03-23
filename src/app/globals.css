@@ -701,6 +701,11 @@ button {
 .building-search-page {
   overflow: hidden;
 }
+/* Fix the content area positioning to account for the header */
+.building-search-page .content-area {
+  transition: margin-top 0.3s ease, height 0.3s ease;
+}
+
 
 .toggle-ui-button {
   position: absolute;
@@ -744,13 +749,39 @@ button {
   color: var(--color-text-dark);
   z-index: 30;
 }
-/* Ensure the page content maintains position during animations */
+/* Additional fix for the content area in BuildingSearchPage */
 @media (min-width: 1024px) {
   .lg\:sticky {
-    position: sticky;
-    top: 0;
+    position: sticky !important;
     z-index: 10;
   }
+}
+
+/* Ensure header-aware content positioning */
+.header-visible {
+  margin-top: 64px; /* approximate header height */
+}
+
+.header-hidden {
+  margin-top: 0;
+}
+
+/* Fix for transform property conflicts */
+.transform-none {
+  transform: none !important;
+}
+
+.transform-translate-y-full {
+  transform: translateY(-100%) !important;
+}
+
+/* Add styles for smooth transitions */
+.transition-transform {
+  transition-property: transform;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
 }
 
 /* Fix potential issues with content shifting */
@@ -773,7 +804,11 @@ button {
   left: 0;
   right: 0;
   z-index: 30;
+  background-color: #ECE8E1;
+  /* Remove conflicting transform properties from CSS classes */
+  /* The transform will be applied inline via style prop */
   transition: transform 0.3s ease;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); */
 }
 
 /* Force content to respect inset values */
