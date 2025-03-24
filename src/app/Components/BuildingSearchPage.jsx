@@ -266,7 +266,7 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
   // Helper function to extract the correct display value
   const getDisplayValue = (key, value) => {
     // Hide building_Id field
-    if (key === "building_Id") return null;
+    if (key === "Building_ID") return null;
 
     // Handle null or undefined values
     if (value === null || value === undefined) {
@@ -534,7 +534,7 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
                               !key.includes("_LOW_COST") &&
                               !key.includes("_AVG_COST") &&
                               !key.includes("_HIGH_COST") &&
-                              key !== "building_Id"
+                              key !== "Building_ID"
                           )
                           .map(([key, value]) => {
                             const displayValue = getDisplayValue(key, value);
@@ -730,14 +730,14 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
                               Fullscreen
                             </button>
                           </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto flex-grow">
+                          <div className="grid grid-cols-1 md:grid-cols-1 gap-2 overflow-y-auto flex-grow">
                             {Object.entries(searchResults[activeTab])
                               .filter(
                                 ([key]) =>
                                   !key.includes("_LOW_COST") &&
                                   !key.includes("_AVG_COST") &&
                                   !key.includes("_HIGH_COST") &&
-                                  key !== "building_Id"
+                                  key !== "Building_ID"
                               )
                               .map(([key, value]) => {
                                 const displayValue = getDisplayValue(
@@ -749,12 +749,12 @@ function BuildingSearchPage({ onNavigate, direction = "forward" }) {
                                 return (
                                   <div
                                     key={key}
-                                    className="flex border-b border-[#E5E0D9] py-2"
+                                    className="flex border-b border-[#E5E0D9] py-4"
                                   >
-                                    <div className="font-medium text-[#394843] w-1/2">
+                                    <div className="text-sm font-medium text-[#394843] w-1/2">
                                       {key.replace(/_/g, " ")}:
                                     </div>
-                                    <div className="w-1/2 text-[#627E75]">
+                                    <div className="text-md w-1/2 font-bold text-[#627E75]">
                                       {displayValue}
                                     </div>
                                   </div>
