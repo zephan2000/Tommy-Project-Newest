@@ -24,13 +24,6 @@ function DesiredCriteriaPage({ onNavigate, direction = "forward" }) {
 
   const [metricAvailability, setMetricAvailability] = useState({});
 
- // First, modify the useEffect hook that handles step setting to not override navigation
-useEffect(() => {
-  // Only set to step 6 when first mounting the component, not on every render
-  if (currentStep < 6) {
-    setCurrentStep(6);
-  }
-}, [setCurrentStep, currentStep]); // Remove currentStep from dependencies
 
   // If step moves beyond 9, navigate to next page
   useEffect(() => {

@@ -21,10 +21,6 @@ function BuildingDesignPage({ onNavigate, direction = "forward" }) {
     loading,
   } = useGreenmark();
 
-  // Reset to step 1 when entering this page
-  useEffect(() => {
-    setCurrentStep(1);
-  }, [setCurrentStep]);
 
   // Get configuration for current step
   const currentStepConfig = stepCriteriaMap[currentStep] || {};
