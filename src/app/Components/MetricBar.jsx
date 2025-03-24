@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useGreenmark } from "./GreenmarkContext";
 
 const MetricBar = ({ 
@@ -33,6 +33,8 @@ const MetricBar = ({
   
   // References for marker positions to check for overlaps
   const markerPositionsRef = useRef([]);
+  // Track if sorting is complete
+  const [sortingComplete, setSortingComplete] = useState(false);
 
   const {
     showSlider = false,
@@ -46,6 +48,68 @@ const MetricBar = ({
 
   const config = metricConfig[metricType];
 
+  // Function to determine marker label position (top or bottom) - wrapped in useCallback
+  const getMarkerLabelPosition = useCallback((position, index) => {
+    if (markerPositionsRef.current.length <= 1) return "bottom";
+    
+    // Sort buildings by position for more accurate overlap detection
+    const positionsSorted = [...markerPositionsRef.current].sort((a, b) => a.position - b.position);
+    
+    // Find where this marker is in the sorted array
+    const currentIdx = positionsSorted.findIndex(p => p.index === index);
+    if (currentIdx === -1) return "bottom";
+    
+    const OVERLAP_THRESHOLD = 14; // percentage points that would cause overlap
+    
+    // Alternating pattern for dense clusters:
+    // For evenly spaced markers that would all overlap, alternate top/bottom
+    // Odd indices go to top, even indices go to bottom
+    if (positionsSorted.length >= 3) {
+      if (currentIdx > 0 && currentIdx < positionsSorted.length - 1) {
+        const leftDiff = Math.abs(position - positionsSorted[currentIdx - 1].position);
+        const rightDiff = Math.abs(positionsSorted[currentIdx + 1].position - position);
+        
+        if (leftDiff < OVERLAP_THRESHOLD && rightDiff < OVERLAP_THRESHOLD) {
+          return currentIdx % 2 === 0 ? "bottom" : "top";
+        }
+      }
+    }
+    
+    // Check individual overlaps with neighbors
+    const hasLeftNeighborOverlap = currentIdx > 0 && 
+      (Math.abs(position - positionsSorted[currentIdx - 1].position) < OVERLAP_THRESHOLD);
+    
+    const hasRightNeighborOverlap = currentIdx < positionsSorted.length - 1 && 
+      (Math.abs(position - positionsSorted[currentIdx + 1].position) < OVERLAP_THRESHOLD);
+    
+    // If has overlap, see what position nearby markers have
+    if (hasLeftNeighborOverlap || hasRightNeighborOverlap) {
+      // Check if nearby markers are already at top
+      const nearbyMarkersAtTop = [];
+      
+      if (hasLeftNeighborOverlap && currentIdx > 0) {
+        const leftMarkerIndex = positionsSorted[currentIdx - 1].index;
+        const leftMarkerPos = document.querySelector(`[data-marker-index="${leftMarkerIndex}"]`)?.getAttribute('data-position');
+        if (leftMarkerPos === "top") nearbyMarkersAtTop.push(leftMarkerIndex);
+      }
+      
+      if (hasRightNeighborOverlap && currentIdx < positionsSorted.length - 1) {
+        const rightMarkerIndex = positionsSorted[currentIdx + 1].index;
+        const rightMarkerPos = document.querySelector(`[data-marker-index="${rightMarkerIndex}"]`)?.getAttribute('data-position');
+        if (rightMarkerPos === "top") nearbyMarkersAtTop.push(rightMarkerIndex);
+      }
+      
+      // If nearby markers are already at top, put this one at bottom
+      if (nearbyMarkersAtTop.length > 0) {
+        return "bottom";
+      }
+      
+      return "top";
+    }
+    
+    return "bottom";
+  }, []);
+
   // Check if all buildings are not eligible for this metric
   const allNotEligible =
     !config.isSimpleNumeric &&
@@ -56,6 +120,71 @@ const MetricBar = ({
         building[config.field] === "Not Eligible" ||
         building[config.field] === "NA"
     );
+
+  // Move useEffect hooks before the early return to avoid conditional hook calls
+  // Detect marker overlaps and adjust positioning - this needs to run regardless of eligibility
+  useEffect(() => {
+    if (!searchResults || !showVerticalMarkers) return;
+    
+    // Get min and max values before using them in the calculations
+    const minValue = sliderRanges[metricType]?.min || 0;
+    const maxValue = (sliderRanges[metricType]?.max || 100) * 1.2;
+    
+    // Reset the positions array
+    const positions = searchResults.map((building, index) => {
+      const value = parseMetricValue(building, metricType);
+      const position = getMarkerPosition(value, minValue, maxValue);
+      return { position, index, value };
+    }).filter(item => item.position >= 0);
+    
+    markerPositionsRef.current = positions;
+    setSortingComplete(true);
+  }, [searchResults, metricType, showVerticalMarkers, getMarkerPosition, parseMetricValue, sliderRanges]);
+  
+  // Force update marker labels on window resize to handle responsive adjustments
+  useEffect(() => {
+    if (!searchResults || !showVerticalMarkers) return;
+    
+    // Get the current min/max values inside the effect to avoid dependency issues
+    const minValue = sliderRanges[metricType]?.min || 0;
+    const maxValue = (sliderRanges[metricType]?.max || 100) * 1.2;
+    
+    const handleResize = () => {
+      // Force a re-render when window size changes to recalculate positions
+      const markers = document.querySelectorAll('[data-marker-index]');
+      markers.forEach(marker => {
+        const index = parseInt(marker.getAttribute('data-marker-index'));
+        const position = markerPositionsRef.current.find(p => p.index === index)?.position || 0;
+        
+        // Pass min/max values directly to avoid referencing variables outside the effect
+        const newPosition = getMarkerLabelPosition(position, index);
+        
+        marker.setAttribute('data-position', newPosition);
+        
+        if (newPosition === "top") {
+          marker.classList.remove("top-12");
+          marker.classList.add("-top-6");
+        } else {
+          marker.classList.remove("-top-6");
+          marker.classList.add("top-12");
+        }
+      });
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Also run the handler once on initial render and whenever dependencies change
+    setTimeout(handleResize, 100); // Small delay to ensure DOM is ready
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, [
+    searchResults, 
+    showVerticalMarkers, 
+    sortingComplete, 
+    getMarkerLabelPosition, 
+    metricType, 
+    sliderRanges
+  ]);
 
   if (allNotEligible) {
     return (
@@ -190,108 +319,6 @@ const MetricBar = ({
     }
   };
 
-  // Detect marker overlaps and adjust positioning
-  useEffect(() => {
-    if (!searchResults || !showVerticalMarkers) return;
-    
-    // Reset the positions array
-    markerPositionsRef.current = searchResults.map((building, index) => {
-      const value = parseMetricValue(building, metricType);
-      const position = getMarkerPosition(value, min, max);
-      return { position, index, value };
-    }).filter(item => item.position >= 0);
-
-    // No need to sort here as we'll handle this in the getMarkerLabelPosition function
-  }, [searchResults, metricType, min, max, showVerticalMarkers]);
-  
-  // Force update marker labels on window resize to handle responsive adjustments
-  useEffect(() => {
-    if (!searchResults || !showVerticalMarkers) return;
-    
-    const handleResize = () => {
-      // Force a re-render when window size changes to recalculate positions
-      const markers = document.querySelectorAll('[data-marker-index]');
-      markers.forEach(marker => {
-        const index = parseInt(marker.getAttribute('data-marker-index'));
-        const position = markerPositionsRef.current.find(p => p.index === index)?.position || 0;
-        marker.setAttribute('data-position', getMarkerLabelPosition(position, index));
-        
-        if (getMarkerLabelPosition(position, index) === "top") {
-          marker.classList.remove("top-12");
-          marker.classList.add("-top-6");
-        } else {
-          marker.classList.remove("-top-6");
-          marker.classList.add("top-12");
-        }
-      });
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [searchResults, showVerticalMarkers]);
-
-  // Function to determine marker label position (top or bottom)
-  const getMarkerLabelPosition = (position, index) => {
-    if (markerPositionsRef.current.length <= 1) return "bottom";
-    
-    // Sort buildings by position for more accurate overlap detection
-    const positionsSorted = [...markerPositionsRef.current].sort((a, b) => a.position - b.position);
-    
-    // Find where this marker is in the sorted array
-    const currentIdx = positionsSorted.findIndex(p => p.index === index);
-    if (currentIdx === -1) return "bottom";
-    
-    const OVERLAP_THRESHOLD = 14; // percentage points that would cause overlap
-    
-    // Alternating pattern for dense clusters:
-    // For evenly spaced markers that would all overlap, alternate top/bottom
-    // Odd indices go to top, even indices go to bottom
-    if (positionsSorted.length >= 3) {
-      if (currentIdx > 0 && currentIdx < positionsSorted.length - 1) {
-        const leftDiff = Math.abs(position - positionsSorted[currentIdx - 1].position);
-        const rightDiff = Math.abs(positionsSorted[currentIdx + 1].position - position);
-        
-        if (leftDiff < OVERLAP_THRESHOLD && rightDiff < OVERLAP_THRESHOLD) {
-          return currentIdx % 2 === 0 ? "bottom" : "top";
-        }
-      }
-    }
-    
-    // Check individual overlaps with neighbors
-    const hasLeftNeighborOverlap = currentIdx > 0 && 
-      (Math.abs(position - positionsSorted[currentIdx - 1].position) < OVERLAP_THRESHOLD);
-    
-    const hasRightNeighborOverlap = currentIdx < positionsSorted.length - 1 && 
-      (Math.abs(position - positionsSorted[currentIdx + 1].position) < OVERLAP_THRESHOLD);
-    
-    // If has overlap, see what position nearby markers have
-    if (hasLeftNeighborOverlap || hasRightNeighborOverlap) {
-      // Check if nearby markers are already at top
-      const nearbyMarkersAtTop = [];
-      
-      if (hasLeftNeighborOverlap && currentIdx > 0) {
-        const leftMarkerIndex = positionsSorted[currentIdx - 1].index;
-        const leftMarkerPos = document.querySelector(`[data-marker-index="${leftMarkerIndex}"]`)?.getAttribute('data-position');
-        if (leftMarkerPos === "top") nearbyMarkersAtTop.push(leftMarkerIndex);
-      }
-      
-      if (hasRightNeighborOverlap && currentIdx < positionsSorted.length - 1) {
-        const rightMarkerIndex = positionsSorted[currentIdx + 1].index;
-        const rightMarkerPos = document.querySelector(`[data-marker-index="${rightMarkerIndex}"]`)?.getAttribute('data-position');
-        if (rightMarkerPos === "top") nearbyMarkersAtTop.push(rightMarkerIndex);
-      }
-      
-      // If nearby markers are already at top, put this one at bottom
-      if (nearbyMarkersAtTop.length > 0) {
-        return "bottom";
-      }
-      
-      return "top";
-    }
-    
-    return "bottom";
-  };
-
   return (
     <div className={showSlider ? "mt-6" : "mt-2"}>
       {showSlider && (
@@ -308,7 +335,7 @@ const MetricBar = ({
               className="w-20 px-2 py-0.5 border border-gray-300 rounded"
             />
           ) : (
-                          <span 
+            <span 
               onClick={startEditing}
               className={allowManualInput ? "cursor-pointer hover:underline relative group" : ""}
               title={allowManualInput ? "Click to edit value" : ""}
@@ -348,7 +375,6 @@ const MetricBar = ({
               const value = parseMetricValue(building, metricType);
               const position = getMarkerPosition(value, min, max);
               if (position < 0) return null;
-              
               
               return (
                 <div
