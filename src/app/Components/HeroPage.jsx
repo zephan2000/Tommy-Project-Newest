@@ -15,7 +15,7 @@ function HeroPage({ onNavigate, direction = "forward" }) {
       Types_of_building: "Office Buildings (Large) (GFA ≥ 15$000sqm)",
       Pathway: "PATHWAY 2",
       Does_the_design_have_DCS_OR_DDC_OR_CCS: "No DCS/DDC/CCS",
-      buildingStatus: "New Building",
+      buildingStatus: "New",
       ETTV_Criteria: "NRBE01-1",
       currentEUI: 75,
       currentASE: 15,
