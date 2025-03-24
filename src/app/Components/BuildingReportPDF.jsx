@@ -1,23 +1,9 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
 
-// Register fonts
-Font.register({
-  family: 'Libre Baskerville',
-  src: 'https://fonts.gstatic.com/s/librebaskerville/v14/kmKnZrc3Hgbbcjq75U4uslyuy4kn0qNZaxM.ttf',
+// Replace your Font registrations and styles with these:
 
-});
-Font.register({
-  family: 'Roboto',
-  src: 'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxP.ttf',
-  fontWeight: 'normal',
-});
-
-Font.register({
-  family: 'Roboto',
-  src: 'https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc9.ttf',
-  fontWeight: 'bold',
-});
+// Remove all Font.register statements - we'll use built-in fonts
 
 // Create styles
 const styles = StyleSheet.create({
@@ -25,17 +11,26 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#fff',
     padding: 30,
-    fontFamily: 'Roboto', // Default font for the page
+    fontFamily: 'Helvetica', // Default font for the page
   },
   
-  // Header styles with Libre Baskerville
+  // Header styles with Times-Roman (serif font similar to Libre Baskerville)
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
     color: '#394843',
     textAlign: 'center',
-    fontFamily: 'Libre Baskerville',
+    fontFamily: 'Helvetica-Bold',
+  },
+  
+  projectName: {
+    fontSize: 18,
+    marginBottom: 20,
+    color: '#32C685',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontFamily: 'Helvetica-Bold',
   },
   
   subHeader: {
@@ -47,7 +42,7 @@ const styles = StyleSheet.create({
     padding: 8,
     backgroundColor: '#F4F1ED',
     borderRadius: 4,
-    fontFamily: 'Libre Baskerville',
+    fontFamily: 'Helvetica-Bold',
   },
   
   solutionHeader: {
@@ -59,23 +54,38 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E0D9',
-    fontFamily: 'Libre Baskerville',
+    fontFamily: 'Helvetica-Bold',
   },
   
-  // Body text styles with Roboto
+  // Body text styles with Helvetica
   content: {
     fontSize: 12,
     marginBottom: 10,
     color: '#627E75',
     lineHeight: 1.4,
-    fontFamily: 'Roboto',
+    fontFamily: 'Helvetica',
+  },
+  
+  row: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E0D9',
+    paddingVertical: 8,
+  },
+  
+  label: {
+    width: '40%',
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#394843',
+    fontFamily: 'Helvetica-Bold',
   },
   
   value: {
     width: '60%',
     fontSize: 12,
     color: '#627E75',
-    fontFamily: 'Roboto',
+    fontFamily: 'Helvetica',
   },
   
   userInputValue: {
@@ -83,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#394843',
-    fontFamily: 'Roboto',
+    fontFamily: 'Helvetica-Bold',
   },
   
   solutionContent: {
@@ -95,57 +105,42 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderLeftWidth: 2,
     borderLeftColor: '#E5E0D9',
-    fontFamily: 'Roboto',
+    fontFamily: 'Helvetica',
   },
-  row: {
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E0D9',
-    paddingVertical: 8,
-  },
-  label: {
-    width: '40%',
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#394843',
-  },
-  value: {
-    width: '60%',
-    fontSize: 12,
-    color: '#627E75',
-  },
-  userInputValue: {
-    width: '60%',
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#394843',
-  },
+  
   divider: {
     borderBottomWidth: 1,
     borderBottomColor: '#E5E0D9',
     marginVertical: 15,
   },
+  
   costCategoryHeader: {
     fontSize: 13,
     fontWeight: 'bold',
     marginTop: 12,
     marginBottom: 6,
     color: '#28A06A',
+    fontFamily: 'Helvetica-Bold',
   },
+  
   metricContainer: {
     marginVertical: 15,
   },
+  
   metricRow: {
     flexDirection: 'row',
     marginBottom: 8,
     alignItems: 'center',
   },
+  
   metricLabel: {
     width: '40%',
     fontSize: 12,
     fontWeight: 'bold',
     color: '#394843',
+    fontFamily: 'Helvetica-Bold',
   },
+  
   metricBar: {
     width: '50%',
     height: 16,
@@ -154,6 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
   },
+  
   metricFill: {
     position: 'absolute',
     left: 0,
@@ -161,6 +157,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: '#32C685',
   },
+  
   metricValue: {
     width: '10%',
     fontSize: 11,
@@ -168,7 +165,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingLeft: 5,
     textAlign: 'left',
+    fontFamily: 'Helvetica-Bold',
   },
+  
   userValueHighlight: {
     backgroundColor: '#E8F4F0',
     padding: 8,
@@ -178,15 +177,19 @@ const styles = StyleSheet.create({
     borderLeftWidth: 3,
     borderLeftColor: '#32C685',
   },
+  
   userValueSection: {
     marginBottom: 20,
   },
+  
   userValueHeader: {
     fontSize: 14,
     fontWeight: 'bold',
     marginBottom: 8,
     color: '#394843',
+    fontFamily: 'Helvetica-Bold',
   },
+  
   footer: {
     position: 'absolute',
     bottom: 30,
@@ -195,20 +198,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#627E75',
     fontSize: 10,
+    fontFamily: 'Helvetica',
   },
+  
   pageNumber: {
     position: 'absolute',
     bottom: 30,
     right: 30,
     fontSize: 10,
     color: '#627E75',
+    fontFamily: 'Helvetica',
   },
+  
   ineligibleNote: {
     fontSize: 12,
-    fontStyle: 'italic',
     color: '#999',
     marginBottom: 10,
+    fontFamily: 'Helvetica', // Try using Times-Italic instead
   },
+  
   solutionSection: {
     marginBottom: 30, // Extra margin to ensure space between solution categories
   }
