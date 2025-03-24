@@ -58,7 +58,7 @@ export const GreenmarkProvider = ({ children }) => {
 
   // Navigation and UI state
   const [currentStep, setCurrentStep] = useState(1);
-  const [totalSteps, setTotalSteps] = useState(9); // Building type, Pathway, DCS, Building Status, ETTV Criteria, EUI, ASE, ETTV, ACMVTSE
+  const [totalSteps, setTotalSteps] = useState(10); // Building type, Pathway, DCS, Building Status, ETTV Criteria, EUI, ASE, ETTV, ACMVTSE
   const [stepsCompleted, setStepsCompleted] = useState({});
   const [activeTab, setActiveTab] = useState(0);
   const [visibleSolutions, setVisibleSolutions] = useState({});
@@ -445,8 +445,6 @@ export const GreenmarkProvider = ({ children }) => {
     } else if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
-
-    console.log("this is " + currentStep);
   };
 
   // Check if current step is completed

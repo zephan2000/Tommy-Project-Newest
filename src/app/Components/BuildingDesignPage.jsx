@@ -82,8 +82,8 @@ function BuildingDesignPage({ onNavigate, direction = "forward" }) {
           <Timeline steps={[1, 2, 3, 4, 5]} />
 
 {/* Right side - Content area */}
-<div className="w-3/5 pl-12">
-          <div className="mb-8 text-[#627E75] text-sm">
+<div className="w-3/5 p-12">
+          <div className="mb-2 text-[#627E75] text-sm">
             Step {currentStep}/5
           </div>
 
@@ -97,7 +97,7 @@ function BuildingDesignPage({ onNavigate, direction = "forward" }) {
 
           {renderInputForCurrentStep()}
 
-          <div className="flex justify-between">
+          <div className="flex justify-end space-x-4 mt-8 px-4">
             <button
               className="px-8 py-2 bg-gray-200 text-[#627E75] rounded-full font-medium"
               onClick={
@@ -125,68 +125,5 @@ function BuildingDesignPage({ onNavigate, direction = "forward" }) {
   );
 }
 
-// Custom timeline step component that aligns with the vertical line
-function StepWithCustomTimeline({ stepNumber }) {
-  const { currentStep, stepCriteriaMap, criteria, stepsCompleted } =
-    useGreenmark();
-  const isActive = stepNumber === currentStep;
-  const isCompleted = stepNumber < currentStep || stepsCompleted[stepNumber];
-
-  const stepConfig = stepCriteriaMap[stepNumber] || {};
-  const { title, description, field } = stepConfig;
-
-  // Get the value for this step to display when completed
-  const stepValue = field ? criteria[field] : "";
-
-  return (
-    <div
-      className={`flex items-center mb-16 relative ${
-        isActive ? "active" : isCompleted ? "completed" : "pending"
-      }`}
-    >
-      {/* Text content - right aligned */}
-      <div className="flex-grow text-right pr-4">
-        <div
-          className={`text-base ${
-            isActive
-              ? "text-[#627E75] font-medium"
-              : isCompleted
-              ? "text-[#32C685]"
-              : "text-[#B5BEB6]"
-          }`}
-        >
-          {title || `Step ${stepNumber}`}
-          {isCompleted && stepValue && (
-            <span className="ml-2 text-sm font-normal">({stepValue})</span>
-          )}
-        </div>
-        <div
-          className={`text-sm ${
-            isActive ? "text-[#394843]" : "text-[#A4A8A2]"
-          }`}
-        >
-          {description || "Complete this step"}
-        </div>
-      </div>
-
-      {/* Circle with number - positioned to overlap the vertical line */}
-      <div className="flex-shrink-0 relative">
-        <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 z-10">
-          <div
-            className={`w-10 h-10 rounded-full flex items-center justify-center ${
-              isActive
-                ? "bg-[#32C685] text-white"
-                : isCompleted
-                ? "bg-[#32C685] text-white"
-                : "bg-[#F4F1ED] text-[#B5BEB6]"
-            }`}
-          >
-            {stepNumber}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default BuildingDesignPage;

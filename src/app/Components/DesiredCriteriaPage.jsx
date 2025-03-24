@@ -28,7 +28,7 @@ function DesiredCriteriaPage({ onNavigate, direction = "forward" }) {
   // If step moves beyond 9, navigate to next page
   useEffect(() => {
     console.log(currentStep + "step");
-    if (currentStep >= 9) {
+    if (currentStep > 9) {
       onNavigate("building-search");
     }
   }, [currentStep, onNavigate]);
@@ -109,8 +109,8 @@ function DesiredCriteriaPage({ onNavigate, direction = "forward" }) {
         <Timeline steps={[6, 7, 8, 9]} />
 
         {/* Right side - Content area */}
-        <div className="w-3/5 pl-12">
-          <div className="mb-8 text-[#627E75] text-sm">
+        <div className="w-3/5 p-12">
+          <div className="mb-2 text-[#627E75] text-sm">
             Step {currentStep}/9
           </div>
 
@@ -140,12 +140,13 @@ function DesiredCriteriaPage({ onNavigate, direction = "forward" }) {
                   showVerticalMarkers: true,
                   showLabels: true,
                   showTooltips: true,
+                  allowManualInput: true // Enable manual input
                 }}
               />
             </div>
           )}
 
-          <div className="flex justify-between">
+<div className="flex justify-end space-x-4 mt-8 px-4">
             <button
               className="px-8 py-2 bg-gray-200 text-[#627E75] rounded-full font-medium"
               onClick={() => {

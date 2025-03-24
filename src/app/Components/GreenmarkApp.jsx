@@ -194,38 +194,38 @@ function GreenmarkApp({
   };
 
   // Then update the pageVariants to ensure proper animations:
-const pageVariants = {
-  initial: (direction) => ({
-    x: direction === "forward" ? "100%" : "-100%",
-    opacity: 0,
-  }),
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      ease: "easeInOut",
-      duration: 0.5,
-    }
-  },
-  exit: (direction) => ({
-    x: direction === "forward" ? "-100%" : "100%",
-    opacity: 0,
-    transition: {
-      type: "tween",
-      ease: "easeInOut",
-      duration: 0.5,
-    }
-  }),
-};
+  const pageVariants = {
+    initial: (direction) => ({
+      x: direction === "forward" ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "tween",
+        ease: "easeInOut",
+        duration: 0.5,
+      },
+    },
+    exit: (direction) => ({
+      x: direction === "forward" ? "-100%" : "100%",
+      opacity: 0,
+      transition: {
+        type: "tween",
+        ease: "easeInOut",
+        duration: 0.5,
+      },
+    }),
+  };
 
   const handleNavigate = (page) => {
     console.log(`Navigating to: ${page}`);
-  
+
     // Special case for home navigation (always set forward direction when going to home)
     if (page === "home") {
       setNavigationDirection("forward");
-      
+
       // If not already there, show confirm dialog
       if (currentPage !== "home") {
         setShowHomeConfirm(true);
@@ -234,46 +234,53 @@ const pageVariants = {
       }
     } else {
       // For non-home pages, determine direction based on page order
-      const currentPageIndex = navItems.findIndex(item => item.id === currentPage);
-      const targetPageIndex = navItems.findIndex(item => item.id === page);
-      
+      const currentPageIndex = navItems.findIndex(
+        (item) => item.id === currentPage
+      );
+      const targetPageIndex = navItems.findIndex((item) => item.id === page);
+
       // Set direction based on page order
       if (targetPageIndex < currentPageIndex) {
         setNavigationDirection("backward");
+        // Reset current step based on page navigation
+        if (page === "building-design") {
+          setCurrentStep(5);
+        } else if (page === "desired-criteria") {
+          setCurrentStep(9);
+        }
       } else {
         setNavigationDirection("forward");
+        // Reset to 1st step if navigation direction is forward
+        if (page === "building-design") {
+          setCurrentStep(1);
+        } else if (page === "desired-criteria") {
+          setCurrentStep(6);
+        }
       }
     }
-  
+
     // Navigate directly
     setCurrentPage(page);
-  
-    // Reset current step based on page navigation
-    if (page === "building-design") {
-      setCurrentStep(1);
-    } else if (page === "desired-criteria") {
-      setCurrentStep(6);
-    }
   };
 
-// Also fix the confirmNavigation function to maintain the backward direction
-const confirmNavigation = () => {
-  if (pendingNavigation === "home") {
-    // Reset all search state before navigating to home
-    resetSearchState();
-    
-    // Ensure the direction is set to backward for home navigation
-    setNavigationDirection("backward");
-    
-    // Set the page
-    setCurrentPage("home");
-  } else if (pendingNavigation) {
-    setCurrentPage(pendingNavigation);
-  }
+  // Also fix the confirmNavigation function to maintain the backward direction
+  const confirmNavigation = () => {
+    if (pendingNavigation === "home") {
+      // Reset all search state before navigating to home
+      resetSearchState();
 
-  setPendingNavigation(null);
-  setShowHomeConfirm(false);
-};
+      // Ensure the direction is set to backward for home navigation
+      setNavigationDirection("backward");
+
+      // Set the page
+      setCurrentPage("home");
+    } else if (pendingNavigation) {
+      setCurrentPage(pendingNavigation);
+    }
+
+    setPendingNavigation(null);
+    setShowHomeConfirm(false);
+  };
 
   const cancelNavigation = () => {
     setPendingNavigation(null);
@@ -296,91 +303,91 @@ const confirmNavigation = () => {
   }, []);
 
   // Update the AnimatePresence and motion.div structure for consistent positioning
-return (
-  <div className="flex flex-col h-full">
-    {/* Home Confirmation Dialog */}
-    <HomeConfirmationDialog
-      isOpen={showHomeConfirm}
-      onCancel={cancelNavigation}
-      onConfirm={confirmNavigation}
-    />
+  return (
+    <div className="flex flex-col h-full">
+      {/* Home Confirmation Dialog */}
+      <HomeConfirmationDialog
+        isOpen={showHomeConfirm}
+        onCancel={cancelNavigation}
+        onConfirm={confirmNavigation}
+      />
 
-    {/* Display header on all pages except home */}
-    {currentPage !== "home" && (
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
-    )}
+      {/* Display header on all pages except home */}
+      {currentPage !== "home" && (
+        <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      )}
 
-    {/* Main Content with Page Transitions */}
-    <div className="flex-grow relative overflow-hidden">
-      <AnimatePresence mode="wait" custom={navigationDirection}>
-        {currentPage === "home" && (
-          <motion.div
-            key="home"
-            custom={navigationDirection}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <HeroPageComponent onNavigate={handleNavigate} />
-          </motion.div>
-        )}
+      {/* Main Content with Page Transitions */}
+      <div className="flex-grow relative overflow-hidden">
+        <AnimatePresence mode="wait" custom={navigationDirection}>
+          {currentPage === "home" && (
+            <motion.div
+              key="home"
+              custom={navigationDirection}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <HeroPageComponent onNavigate={handleNavigate} />
+            </motion.div>
+          )}
 
-        {currentPage === "building-design" && (
-          <motion.div
-            key="building-design"
-            custom={navigationDirection}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <div className="h-full overflow-auto">
-              <BuildingDesignPageComponent onNavigate={handleNavigate} />
-            </div>
-          </motion.div>
-        )}
+          {currentPage === "building-design" && (
+            <motion.div
+              key="building-design"
+              custom={navigationDirection}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <div className="h-full overflow-auto">
+                <BuildingDesignPageComponent onNavigate={handleNavigate} />
+              </div>
+            </motion.div>
+          )}
 
-        {currentPage === "desired-criteria" && (
-          <motion.div
-            key="desired-criteria"
-            custom={navigationDirection}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <div className="h-full overflow-auto">
-              <DesiredCriteriaPageComponent onNavigate={handleNavigate} />
-            </div>
-          </motion.div>
-        )}
+          {currentPage === "desired-criteria" && (
+            <motion.div
+              key="desired-criteria"
+              custom={navigationDirection}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <div className="h-full overflow-auto">
+                <DesiredCriteriaPageComponent onNavigate={handleNavigate} />
+              </div>
+            </motion.div>
+          )}
 
-        {currentPage === "building-search" && (
-          <motion.div
-            key="building-search"
-            custom={navigationDirection}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <div className="h-full overflow-auto">
-              <BuildingSearchPageComponent onNavigate={handleNavigate} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {currentPage === "building-search" && (
+            <motion.div
+              key="building-search"
+              custom={navigationDirection}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <div className="h-full overflow-auto">
+                <BuildingSearchPageComponent onNavigate={handleNavigate} />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
-  </div>
   );
 }
 
@@ -467,17 +474,21 @@ function Header({ currentPage, onNavigate }) {
                 )}
 
                 <li>
-                  <button
-                    onClick={() => isClickable && onNavigate(item.id)}
-                    className={`text-xl ${
-                      isCurrent
-                        ? "text-[#627E75] font-bold cursor-default"
-                        : "text-gray-400 cursor-pointer"
-                    }`}
-                    disabled={!isClickable}
+                  {isClickable ? (
+                    <button
+                      onClick={() => onNavigate(item.id)}
+                      className="text-xl text-gray-400 cursor-pointer"
+                    >
+                      {item.label}
+                    </button>
+                  ) : (
+                    <span
+                    style={{ fontFamily: "'Libre Baskerville', serif" }}
+                    className="text-xl text-[#627E75] font-bold cursor-default"
                   >
-                    {item.label}
-                  </button>
+                      {item.label}
+                    </span>
+                  )}
                 </li>
               </React.Fragment>
             );

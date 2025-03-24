@@ -41,7 +41,7 @@ function TimelineStep({ stepNumber }) {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M12 5v14M5 12h14" />
+              <path d="M15 6l-6 6 6 6" />
             </svg>
           </div>
         )}

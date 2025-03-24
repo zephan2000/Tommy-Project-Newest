@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useGreenmark } from "./GreenmarkContext";
 
 const MetricBar = ({ 
@@ -10,6 +10,7 @@ const MetricBar = ({
     showLabels: true,
     showTooltips: true,
     barStyle: "default",
+    allowManualInput: false,
   }
 }) => {
   const {
@@ -20,11 +21,18 @@ const MetricBar = ({
     parseMetricValue,
     getMarkerPosition,
     getFormattedValue,
-    handleSliderChange
+    handleSliderChange,
+    setCriteria
   } = useGreenmark();
 
-  // Use state for tooltip visibility
+  // Use state for tooltip visibility and manual input
   const [activeTooltip, setActiveTooltip] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [manualValue, setManualValue] = useState("");
+  const inputRef = useRef(null);
+  
+  // References for marker positions to check for overlaps
+  const markerPositionsRef = useRef([]);
 
   const {
     showSlider = false,
@@ -33,6 +41,7 @@ const MetricBar = ({
     showLabels = true,
     showTooltips = true,
     barStyle = "default",
+    allowManualInput = false,
   } = options;
 
   const config = metricConfig[metricType];
@@ -137,12 +146,182 @@ const MetricBar = ({
   const sliderCurrentValue = checkCurrentValue(parseFloat(currentValue || 0));
   const currentPosition = getMarkerPosition(sliderCurrentValue, min, max);
 
+  // Function to handle manual input
+  const handleManualInputChange = (e) => {
+    setManualValue(e.target.value);
+  };
+
+  const handleManualInputBlur = () => {
+    const parsedValue = parseFloat(manualValue);
+    
+    if (!isNaN(parsedValue) && parsedValue >= min && parsedValue <= max) {
+      // Update the criteria with the new value
+      setCriteria(prev => ({
+        ...prev,
+        [`current${metricType}`]: parsedValue
+      }));
+      
+      // Also call the slider change handler to ensure consistency
+      handleSliderChange(parsedValue, metricType);
+    }
+    
+    setIsEditing(false);
+  };
+
+  const handleManualInputKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      inputRef.current.blur();
+    } else if (e.key === 'Escape') {
+      setIsEditing(false);
+      setManualValue("");
+    }
+  };
+
+  const startEditing = () => {
+    if (allowManualInput) {
+      setManualValue(currentValue || "");
+      setIsEditing(true);
+      // Focus the input after render
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 0);
+    }
+  };
+
+  // Detect marker overlaps and adjust positioning
+  useEffect(() => {
+    if (!searchResults || !showVerticalMarkers) return;
+    
+    // Reset the positions array
+    markerPositionsRef.current = searchResults.map((building, index) => {
+      const value = parseMetricValue(building, metricType);
+      const position = getMarkerPosition(value, min, max);
+      return { position, index, value };
+    }).filter(item => item.position >= 0);
+
+    // No need to sort here as we'll handle this in the getMarkerLabelPosition function
+  }, [searchResults, metricType, min, max, showVerticalMarkers]);
+  
+  // Force update marker labels on window resize to handle responsive adjustments
+  useEffect(() => {
+    if (!searchResults || !showVerticalMarkers) return;
+    
+    const handleResize = () => {
+      // Force a re-render when window size changes to recalculate positions
+      const markers = document.querySelectorAll('[data-marker-index]');
+      markers.forEach(marker => {
+        const index = parseInt(marker.getAttribute('data-marker-index'));
+        const position = markerPositionsRef.current.find(p => p.index === index)?.position || 0;
+        marker.setAttribute('data-position', getMarkerLabelPosition(position, index));
+        
+        if (getMarkerLabelPosition(position, index) === "top") {
+          marker.classList.remove("top-12");
+          marker.classList.add("-top-6");
+        } else {
+          marker.classList.remove("-top-6");
+          marker.classList.add("top-12");
+        }
+      });
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [searchResults, showVerticalMarkers]);
+
+  // Function to determine marker label position (top or bottom)
+  const getMarkerLabelPosition = (position, index) => {
+    if (markerPositionsRef.current.length <= 1) return "bottom";
+    
+    // Sort buildings by position for more accurate overlap detection
+    const positionsSorted = [...markerPositionsRef.current].sort((a, b) => a.position - b.position);
+    
+    // Find where this marker is in the sorted array
+    const currentIdx = positionsSorted.findIndex(p => p.index === index);
+    if (currentIdx === -1) return "bottom";
+    
+    const OVERLAP_THRESHOLD = 14; // percentage points that would cause overlap
+    
+    // Alternating pattern for dense clusters:
+    // For evenly spaced markers that would all overlap, alternate top/bottom
+    // Odd indices go to top, even indices go to bottom
+    if (positionsSorted.length >= 3) {
+      if (currentIdx > 0 && currentIdx < positionsSorted.length - 1) {
+        const leftDiff = Math.abs(position - positionsSorted[currentIdx - 1].position);
+        const rightDiff = Math.abs(positionsSorted[currentIdx + 1].position - position);
+        
+        if (leftDiff < OVERLAP_THRESHOLD && rightDiff < OVERLAP_THRESHOLD) {
+          return currentIdx % 2 === 0 ? "bottom" : "top";
+        }
+      }
+    }
+    
+    // Check individual overlaps with neighbors
+    const hasLeftNeighborOverlap = currentIdx > 0 && 
+      (Math.abs(position - positionsSorted[currentIdx - 1].position) < OVERLAP_THRESHOLD);
+    
+    const hasRightNeighborOverlap = currentIdx < positionsSorted.length - 1 && 
+      (Math.abs(position - positionsSorted[currentIdx + 1].position) < OVERLAP_THRESHOLD);
+    
+    // If has overlap, see what position nearby markers have
+    if (hasLeftNeighborOverlap || hasRightNeighborOverlap) {
+      // Check if nearby markers are already at top
+      const nearbyMarkersAtTop = [];
+      
+      if (hasLeftNeighborOverlap && currentIdx > 0) {
+        const leftMarkerIndex = positionsSorted[currentIdx - 1].index;
+        const leftMarkerPos = document.querySelector(`[data-marker-index="${leftMarkerIndex}"]`)?.getAttribute('data-position');
+        if (leftMarkerPos === "top") nearbyMarkersAtTop.push(leftMarkerIndex);
+      }
+      
+      if (hasRightNeighborOverlap && currentIdx < positionsSorted.length - 1) {
+        const rightMarkerIndex = positionsSorted[currentIdx + 1].index;
+        const rightMarkerPos = document.querySelector(`[data-marker-index="${rightMarkerIndex}"]`)?.getAttribute('data-position');
+        if (rightMarkerPos === "top") nearbyMarkersAtTop.push(rightMarkerIndex);
+      }
+      
+      // If nearby markers are already at top, put this one at bottom
+      if (nearbyMarkersAtTop.length > 0) {
+        return "bottom";
+      }
+      
+      return "top";
+    }
+    
+    return "bottom";
+  };
+
   return (
     <div className={showSlider ? "mt-6" : "mt-2"}>
       {showSlider && (
         <label className="font-medium block mb-4">
-          {config.label}: {currentValue || "-"}
-          {config.unit && ` ${config.unit}`}
+          {config.label}: {" "}
+          {isEditing ? (
+            <input
+              ref={inputRef}
+              type="text"
+              value={manualValue}
+              onChange={handleManualInputChange}
+              onBlur={handleManualInputBlur}
+              onKeyDown={handleManualInputKeyDown}
+              className="w-20 px-2 py-0.5 border border-gray-300 rounded"
+            />
+          ) : (
+                          <span 
+              onClick={startEditing}
+              className={allowManualInput ? "cursor-pointer hover:underline relative group" : ""}
+              title={allowManualInput ? "Click to edit value" : ""}
+            >
+              {currentValue || "-"}
+              {config.unit && ` ${config.unit}`}
+              {allowManualInput && (
+                <span className="absolute left-1/2 -translate-x-1/2 -top-8 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                  Click to edit value
+                </span>
+              )}
+            </span>
+          )}
         </label>
       )}
 
@@ -169,13 +348,21 @@ const MetricBar = ({
               const value = parseMetricValue(building, metricType);
               const position = getMarkerPosition(value, min, max);
               if (position < 0) return null;
+              
+              
               return (
                 <div
                   key={index}
                   className="absolute top-0 w-0.5 h-10 bg-purple-600"
                   style={{ left: `${position}%` }}
                 >
-                  <div className="absolute -left-14 top-12 w-28 text-center text-xs">
+                  <div 
+                    data-marker-index={index}
+                    data-position={getMarkerLabelPosition(position, index)}
+                    className={`absolute -left-14 w-28 text-center text-xs ${
+                      getMarkerLabelPosition(position, index) === "top" ? "-top-6" : "top-12"
+                    }`}
+                  >
                     {getFormattedValue(building, metricType)}
                   </div>
                 </div>
