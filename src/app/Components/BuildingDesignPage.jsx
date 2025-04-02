@@ -96,6 +96,7 @@ function BuildingDesignPage({ onNavigate, direction = "forward" }) {
           </p>
 
           {renderInputForCurrentStep()}
+          
 
           <div className="flex justify-end space-x-4 mt-8 px-4">
             <button
@@ -115,9 +116,42 @@ function BuildingDesignPage({ onNavigate, direction = "forward" }) {
               onClick={handleNextStep}
               disabled={!isCurrentStepCompleted()}
             >
+
               {currentStep === 5 ? "Next Page" : "Next Step"}
             </button>
           </div>
+          <div>
+            {currentStep === 2 && (
+              <div className="mt-12 text-[#394843]">
+                <h3 className="font-serif text-xl mb-4">Pathway 1:</h3>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>Energy Efficiency (EE) Performance-Based Approach</li>
+                  <li>Focuses on improving overall building energy efficiency.</li>
+                  <li>Requires compliance with Energy Use Intensity (EUI) benchmarks.</li>
+                  <li>Encourages high-efficiency systems such as chillers, lighting, and ACMV.</li>
+                  <li>Ideal for projects aiming for a direct and measurable reduction in energy consumption.</li>
+                </ul>
+                
+                <h3 className="font-serif text-xl mb-4">Pathway 2:</h3>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>Prescriptive-Based Approach</li>
+                  <li>Provides a checklist of specific energy-efficient design measures.</li>
+                  <li>Includes requirements for External Thermal Transfer Value (ETTV), natural ventilation, and efficient ACMV systems.</li>
+                  <li>Suitable for projects that may not meet EUI targets but can achieve sustainability through targeted design choices.</li>
+                </ul>
+                
+                <h3 className="font-serif text-xl mb-4">Pathway 3:</h3>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>Outcome-Based Approach</li>
+                  <li>Emphasizes real-world performance through measurement and verification.</li>
+                  <li>Requires post-occupancy energy monitoring to ensure efficiency goals are met.</li>
+                  <li>Allows for greater design flexibility as long as energy savings are proven.</li>
+                  <li>Best for projects integrating innovative or non-standard energy efficiency solutions.</li>
+                </ul>
+              </div>
+            )}
+          </div>
+     
         </div>
       </div>
     </div>
